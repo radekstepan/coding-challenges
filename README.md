@@ -1,4 +1,6 @@
-#Elixir School of Magix
+#Elixir School of Magic
+
+Solving challenges with Elixir magic.
 
 * [Learn X in Y minutes](http://learnxinyminutes.com/docs/elixir/)
 * [Language Docs](http://elixir-lang.org/docs/stable/)
