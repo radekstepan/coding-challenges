@@ -1,9 +1,9 @@
 #!/usr/bin/env elixir
 defmodule Solve do
 
-    def problem(input) do        
+    def problem(input) do
         len = String.length(input) - 1
-        loopy(0, len, len, input, HashSet.new([]))     
+        loopy(0, len, len, input, HashSet.new([]))
     end
 
     defp loopy(i, j, len, input, output) do
