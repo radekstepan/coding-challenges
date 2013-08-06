@@ -8,7 +8,7 @@ defmodule Test do
     use ExUnit.Case
 
     test "basic" do
-        assert Solve.problem("ab cde fgh ij klm n opq rstu\n", 9) == """
+        assert Solve.problem("ab cde  fgh ij klm n opq rstu\n", 9) == """
         ab cde
         fgh ij
         klm n opq
