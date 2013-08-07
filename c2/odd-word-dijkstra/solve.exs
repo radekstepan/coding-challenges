@@ -12,7 +12,7 @@ defmodule Solve do
             { @space, tail } -> loopy tail, output ++ [ @space ], 0, !is_even
             
             { head, tail } ->
-                if is_even or (!is_even and length == 0) do
+                if is_even or length == 0 do
                     loopy tail, output ++ [ head ], bool_to_int.(!is_even), is_even
                 else
                     loopy tail, List.insert_at(output, - length, head), length + 1, false
