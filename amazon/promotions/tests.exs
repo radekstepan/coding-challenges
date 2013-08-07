@@ -8,28 +8,28 @@ defmodule Test do
     use ExUnit.Case
 
     test "first" do
-        basket = Checkout.new()
-        basket = Checkout.add { :sku, "001" }, basket
-        basket = Checkout.add { :sku, "002" }, basket
-        basket = Checkout.add { :sku, "003" }, basket
-        assert Checkout.total(basket) == 66.78
+        assert ( Checkout.new() |>
+        Checkout.add({ :sku, "001" }) |>
+        Checkout.add({ :sku, "002" }) |>
+        Checkout.add({ :sku, "003" }) |>
+        Checkout.total ) == 66.78
     end
 
     test "second" do
-        basket = Checkout.new()
-        basket = Checkout.add { :sku, "001" }, basket
-        basket = Checkout.add { :sku, "003" }, basket
-        basket = Checkout.add { :sku, "001" }, basket
-        assert Checkout.total(basket) == 36.95
+        assert ( Checkout.new() |>
+        Checkout.add({ :sku, "001" }) |>
+        Checkout.add({ :sku, "003" }) |>
+        Checkout.add({ :sku, "001" }) |>
+        Checkout.total ) == 36.95
     end
 
     test "third" do
-        basket = Checkout.new()
-        basket = Checkout.add { :sku, "001" }, basket
-        basket = Checkout.add { :sku, "002" }, basket
-        basket = Checkout.add { :sku, "001" }, basket
-        basket = Checkout.add { :sku, "003" }, basket
-        assert Checkout.total(basket) == 73.76
+        assert ( Checkout.new() |>
+        Checkout.add({ :sku, "001" }) |>
+        Checkout.add({ :sku, "002" }) |>
+        Checkout.add({ :sku, "001" }) |>
+        Checkout.add({ :sku, "003" }) |>
+        Checkout.total ) == 73.76
     end
 
 end

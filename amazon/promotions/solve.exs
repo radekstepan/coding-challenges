@@ -14,7 +14,7 @@ defmodule Checkout do
     end
 
     # Add an item into the basket.
-    def add({ :sku, sku }, basket) do
+    def add(basket, { :sku, sku }) do
         HashDict.put basket, sku, HashDict.get(basket, sku, 0) + 1
     end
 
