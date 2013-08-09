@@ -53,11 +53,8 @@ defmodule Cache do
             entry = entry.older tail
         end
 
-        # We are the new tail.
-        cache = cache.tail key
-
         # Have we reached our capacity?
-        if (size = cache.size) == cache.limit do
+        if cache.size == cache.limit do
             # New head...
             new_head = HashDict.get(
                 cache.store,
@@ -78,11 +75,25 @@ defmodule Cache do
             cache = cache.head new_head.key
         else
             # Increase our size.
-            cache = cache.size size + 1
+            cache = cache.update_size fn(old) -> old + 1 end
         end
 
-        # Save the entry & go at it again.
-        cache.store HashDict.put cache.store, key, entry
+        cache.update(
+            # We are the new tail.
+            tail: key,
+            # Save the entry & go at it again.
+            store: HashDict.put(cache.store, key, entry)
+        )
+    end
+
+    # Update an attribute of an Entry and save it. Supports chaining.
+    defp update(cache, key, attribute, value) do
+        item = HashDict.get cache.store, key
+        case attribute do
+            :newer -> item = item.newer value
+            :older -> item = item.older value
+        end
+        cache.store HashDict.put cache.store, key, item
     end
 
     @doc """
@@ -112,60 +123,39 @@ defmodule Cache do
 
                     # If newer exists...
                     unless nil?(entry.newer) do
-                        cache = cache.store(
-                            HashDict.put(
-                                # Save to the store...
-                                cache.store,
-                                # ...our newer...
-                                entry.newer,
-                                HashDict.get(cache.store, entry.newer, nil)
-                                # ...but point it to our older.
-                                .older(entry.older)
-                            )
-                        )
+                        # Save the newer to our store but pointing to our older.
+                        cache = update cache, entry.newer, :older, entry.older
                     end
 
                     # If older exists...
                     unless nil?(entry.older) do
-                        cache = cache.store(
-                            HashDict.put(
-                                # Save to the store...
-                                cache.store,
-                                # ...our older...
-                                entry.older,
-                                HashDict.get(cache.store, entry.older)
-                                # ...but point it to our newer.
-                                .newer(entry.newer)
-                            )
-                        )
+                        # Save the older to our store but pointing to our newer.
+                        cache = update cache, entry.older, :newer, entry.newer
                     end
-
-                    # Nothing is newer and our older is what the tail was.
-                    entry = entry.newer(nil).older(cache.tail)
 
                     # Was there a tail?
                     unless nil?(cache.tail) do
-                        cache = cache.store(
-                            HashDict.put(
-                                # Save to store...
-                                cache.store,
-                                # ...whatever the tail was...
-                                cache.tail,
-                                HashDict.get(cache.store, cache.tail)
-                                # ...but point it to us as its newer.
-                                .newer(entry.key)
-                            )
-                        )
+                        # Save the value of tail but pointing forward to us.
+                        cache = update cache, cache.tail, :newer, entry.key
                     end
 
-                    cache = cache
-                    # We are the tail...
-                    .tail(entry.key)
-                    # ...and save us.
-                    .store(HashDict.put(cache.store, entry.key, entry))
-
                     # Save the store and return the value requested.
-                    { :cache, cache, :value, entry.value }
+                    {
+                        :cache, cache.update(
+                            # Save us.
+                            store: HashDict.put(
+                                cache.store, entry.key, entry.update(
+                                    # Nothing is newer.
+                                    newer: nil,
+                                    # We point back to what the tail was.
+                                    older: cache.tail
+                                )
+                            ),
+                            # ...and point to us as the tail.
+                            tail:  entry.key
+                        ),
+                        :value, entry.value
+                    }
                 end
         end
     end
