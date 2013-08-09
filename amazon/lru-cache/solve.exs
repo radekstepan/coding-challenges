@@ -1,47 +1,80 @@
 #!/usr/bin/env elixir
-defrecord LRUCache, size: 0, limit: 0, store: HashDict.new(), head: nil, tail: nil
+defrecord LRUCache,
+    size:  0,              # current size
+    limit: 0,              # total allowed capacity
+    store: HashDict.new(), # the entries store
+    head:  nil,            # the head key (oldest)
+    tail:  nil             # the tail key (newest)
 
-defrecord Entry, key: nil, value: nil, newer: nil, older: nil
+defrecord Entry,
+    key: nil,   # each entry has a key
+    value: nil, # value
+    newer: nil, # a newer pointer (key)
+    older: nil  # and an older pointer (key)
 
 defmodule Cache do
 
-    # Init a new cache.
+    @moduledoc """
+    An implementation of a cache using a Least Recently Used algo.
+    """
+
+    @doc """
+    Init a new cache of a limit.
+    """
+    @spec new(integer) :: LRUCache
+    
     def new(limit) do LRUCache.new limit: limit end
 
-    # Save an entry into a cache. Chaining.
+    @doc """
+    Save an entry into a cache. Chain it & destructive of course.
+    """
+    @spec put(LRUCache, { :key, any, :value, any }) :: LRUCache
+
     def put(cache, { :key, key, :value, value }) do
+        # Create the entry.
         entry = Entry.new key: key, value: value
 
-        # First item?
+        # Are we the very first item?
         if nil?(tail = cache.tail) do
             # Head is us then.
             cache = cache.head key
         else
-            # Point the entry assoc w/ previous tail to us.
-            previous = HashDict.get cache.store, tail
-            cache = cache.store HashDict.put cache.store, previous.key, previous.newer(key)
+            # Need to update the old tail.
+            cache = cache.store HashDict.put(
+                # Save in store...
+                cache.store,
+                # ...whatever the old tail was...
+                tail,
+                # ...but pointing to us as their newer.
+                HashDict.get(cache.store, tail).newer(key)
+            )
             
-            # We point to them.
-            entry = entry.older previous.key
+            # We point back to the old tail.
+            entry = entry.older tail
         end
 
-        # The actual new tail now points to us.
+        # We are the new tail.
         cache = cache.tail key
 
-        # Reached the capacity?
+        # Have we reached our capacity?
         if (size = cache.size) == cache.limit do
-            # Remove the head.
-            ex_head = HashDict.get cache.store, cache.head
-            new_head = HashDict.get cache.store, ex_head.newer
+            # New head...
+            new_head = HashDict.get(
+                cache.store,
+                # ...is whatever was newer to the old head...
+                HashDict.get(cache.store, cache.head).newer
+            # ...poining back to nothing.
+            ).older nil
             
-            # Die.
-            cache = cache.store HashDict.delete cache.store, ex_head.key
+            cache = cache.store(
+                cache.store |>
+                # Delete the old head...
+                HashDict.delete(cache.head) |>
+                # ...and save the new one in the store.
+                HashDict.put(new_head.key, new_head)
+            )
             
-            # You point to nothing.
-            new_head = new_head.older nil
-            cache = cache.store HashDict.put cache.store, new_head.key, new_head
-            
-            # And you are next in line.
+            # And the new head is next in line for a chop...
             cache = cache.head new_head.key
         else
             # Increase our size.
@@ -52,16 +85,24 @@ defmodule Cache do
         cache.store HashDict.put cache.store, key, entry
     end
 
-    # Get value from cache or return :not_found. No chaining & destructive.
+    @doc """
+    Get value from cache or return :not_found. No chaining & destructive.
+    """
+    @spec get(LRUCache, { :key, any }) :: { :cache, LRUCache, :value, any }
+    @spec get(LRUCache, { :key, any }) :: { :cache, LRUCache, :not_found }
+
     def get(cache, { :key, key }) do
+        # What have we got here?
         case HashDict.get(cache.store, key, nil) do
+            # Nothing.
             nil   -> { :cache, cache, :not_found }
+            # Something.
             entry ->
-                # We are the tail, just return.
+                # If we are the tail, no need to reorder.
                 if cache.tail == entry.key do
                     { :cache, cache, :value, entry.value }
                 else
-                    # We need to fix the gap that will exist after us.                    
+                    # We need to fix the gap that will exist after us then.                    
                     
                     # Are we the head?
                     if cache.head == entry.key do
@@ -71,40 +112,57 @@ defmodule Cache do
 
                     # If newer exists...
                     unless nil?(entry.newer) do
-                        newer = HashDict.get(cache.store, entry.newer, nil)
-                        # The newer needs to point to our older.
-                        newer = newer.older entry.older # be it Entry or nil
-                        # Save the newer for sure.
-                        cache = cache.store HashDict.put(cache.store, newer.key, newer)
+                        cache = cache.store(
+                            HashDict.put(
+                                # Save to the store...
+                                cache.store,
+                                # ...our newer...
+                                entry.newer,
+                                HashDict.get(cache.store, entry.newer, nil)
+                                # ...but point it to our older.
+                                .older(entry.older)
+                            )
+                        )
                     end
 
                     # If older exists...
                     unless nil?(entry.older) do
-                        older = HashDict.get cache.store, entry.older, nil
-                        # The older needs to point to our newer.
-                        older = older.newer entry.newer # be it Entry or nil
-                        # Save the older for sure.
-                        cache = cache.store HashDict.put(cache.store, entry.older, older)
+                        cache = cache.store(
+                            HashDict.put(
+                                # Save to the store...
+                                cache.store,
+                                # ...our older...
+                                entry.older,
+                                HashDict.get(cache.store, entry.older)
+                                # ...but point it to our newer.
+                                .newer(entry.newer)
+                            )
+                        )
                     end
 
-                    # Can't get any fresher than this.
-                    entry = entry.newer nil
+                    # Nothing is newer and our older is what the tail was.
+                    entry = entry.newer(nil).older(cache.tail)
 
-                    # We are pointing back to whatever the tail was.
-                    entry = entry.older cache.tail
-
-                    # The now ex tail item needs to point to us.
+                    # Was there a tail?
                     unless nil?(cache.tail) do
-                        ex_tail = HashDict.get cache.store, cache.tail, nil
-                        ex_tail = ex_tail.newer entry.key
-                        cache = cache.store HashDict.put cache.store, cache.tail, ex_tail
+                        cache = cache.store(
+                            HashDict.put(
+                                # Save to store...
+                                cache.store,
+                                # ...whatever the tail was...
+                                cache.tail,
+                                HashDict.get(cache.store, cache.tail)
+                                # ...but point it to us as its newer.
+                                .newer(entry.key)
+                            )
+                        )
                     end
 
-                    # We are the tail.
-                    cache = cache.tail entry.key
-
-                    # Save us.
-                    cache = cache.store HashDict.put(cache.store, entry.key, entry)
+                    cache = cache
+                    # We are the tail...
+                    .tail(entry.key)
+                    # ...and save us.
+                    .store(HashDict.put(cache.store, entry.key, entry))
 
                     # Save the store and return the value requested.
                     { :cache, cache, :value, entry.value }
@@ -112,16 +170,22 @@ defmodule Cache do
         end
     end
 
-    # Display from head (oldest) to tail (newest). No chaining.
+    @doc """
+    Display a list of keys from head (oldest) to tail (newest). No chaining.
+    """
+    @spec to_string(LRUCache) :: list
+
     def to_string(cache) do
-        store = cache.store
-        to_string store, HashDict.get(store, cache.tail), []
+        to_string cache.store, HashDict.get(cache.store, cache.tail), []
     end
 
     defp to_string(store, entry, list) do
+        # A key goes to the head of the list.
         list = [ entry.key ] ++ list
         case entry.older do
+            # Return if there is no older.
             nil -> list
+            # Otherwise go again with the older.
             key -> to_string store, HashDict.get(store, key), list
         end
     end
