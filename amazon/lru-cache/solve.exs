@@ -7,7 +7,7 @@ defrecord LRUCache,
     tail:  nil             # the tail key (newest)
 
 defrecord Entry,
-    key: nil,   # each entry has a key
+    key:   nil, # each entry has a key
     value: nil, # value
     newer: nil, # a newer pointer (key)
     older: nil  # and an older pointer (key)
@@ -39,15 +39,8 @@ defmodule Cache do
             # Head is us then.
             cache = cache.head key
         else
-            # Need to update the old tail.
-            cache = cache.store HashDict.put(
-                # Save in store...
-                cache.store,
-                # ...whatever the old tail was...
-                tail,
-                # ...but pointing to us as their newer.
-                HashDict.get(cache.store, tail).newer(key)
-            )
+            # Whatever the old tail was, point to us as their newer.
+            cache = update cache, tail, :newer, key
             
             # We point back to the old tail.
             entry = entry.older tail
@@ -84,16 +77,6 @@ defmodule Cache do
             # Save the entry & go at it again.
             store: HashDict.put(cache.store, key, entry)
         )
-    end
-
-    # Update an attribute of an Entry and save it. Supports chaining.
-    defp update(cache, key, attribute, value) do
-        item = HashDict.get cache.store, key
-        case attribute do
-            :newer -> item = item.newer value
-            :older -> item = item.older value
-        end
-        cache.store HashDict.put cache.store, key, item
     end
 
     @doc """
@@ -158,6 +141,16 @@ defmodule Cache do
                     }
                 end
         end
+    end
+
+    # Update an attribute of an Entry and save it. Supports chaining.
+    defp update(cache, key, attribute, value) do
+        item = HashDict.get cache.store, key
+        case attribute do
+            :newer -> item = item.newer value
+            :older -> item = item.older value
+        end
+        cache.store HashDict.put cache.store, key, item
     end
 
     @doc """
