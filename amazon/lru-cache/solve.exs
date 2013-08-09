@@ -164,7 +164,7 @@ defmodule Cache do
 
     defp to_string(store, entry, list) do
         # A key goes to the head of the list.
-        list = [ entry.key ] ++ list
+        list = List.concat [ entry.key ], list
         case entry.older do
             # Return if there is no older.
             nil -> list
