@@ -15,7 +15,7 @@ defrecord Entry,
 defmodule Cache do
 
     @moduledoc """
-    An implementation of a cache using a Least Recently Used algo.
+    An implementation of a cache using the Least Recently Used algo.
     """
 
     @doc """
