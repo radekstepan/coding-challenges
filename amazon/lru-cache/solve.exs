@@ -56,16 +56,15 @@ defmodule Cache do
             # ...poining back to nothing.
             ).older nil
             
-            cache = cache.store(
-                cache.store |>
-                # Delete the old head...
-                HashDict.delete(cache.head) |>
-                # ...and save the new one in the store.
-                HashDict.put(new_head.key, new_head)
+            cache = cache.update(
+                store: cache.store |>
+                    # Delete the old head...
+                    HashDict.delete(cache.head) |>
+                    # ...and save the new one in the store.
+                    HashDict.put(new_head.key, new_head),
+                # And the new head is next in line for a chop...
+                head: new_head.key
             )
-            
-            # And the new head is next in line for a chop...
-            cache = cache.head new_head.key
         else
             # Increase our size.
             cache = cache.update_size fn(old) -> old + 1 end
