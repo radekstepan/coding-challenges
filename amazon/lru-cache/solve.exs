@@ -103,23 +103,13 @@ defmodule Cache do
                         cache = cache.head entry.newer
                     end
 
-                    # If newer exists...
-                    unless nil?(entry.newer) do
+                    cache = cache |>
                         # Save the newer to our store but pointing to our older.
-                        cache = update cache, entry.newer, :older, entry.older
-                    end
-
-                    # If older exists...
-                    unless nil?(entry.older) do
+                        update(entry.newer, :older, entry.older) |>
                         # Save the older to our store but pointing to our newer.
-                        cache = update cache, entry.older, :newer, entry.newer
-                    end
-
-                    # Was there a tail?
-                    unless nil?(cache.tail) do
+                        update(entry.older, :newer, entry.newer) |>
                         # Save the value of tail but pointing forward to us.
-                        cache = update cache, cache.tail, :newer, entry.key
-                    end
+                        update(cache.tail, :newer, entry.key)
 
                     # Save the store and return the value requested.
                     {
@@ -143,6 +133,8 @@ defmodule Cache do
     end
 
     # Update an attribute of an Entry and save it. Supports chaining.
+    defp update(cache, nil, _, _), do: cache
+
     defp update(cache, key, attribute, value) do
         item = HashDict.get cache.store, key
         case attribute do
