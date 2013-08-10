@@ -81,55 +81,54 @@ defmodule Cache do
     @doc """
     Get value from cache or return :not_found. No chaining & destructive.
     """
-    @spec get(LRUCache, { :key, any }) :: { :cache, LRUCache, :value, any }
-    @spec get(LRUCache, { :key, any }) :: { :cache, LRUCache, :not_found }
+    @spec get(LRUCache, { :key, any }) :: { LRUCache, :value, any }
+    @spec get(LRUCache, { :key, any }) :: { LRUCache, :not_found }
 
     def get(cache, { :key, key }) do
-        # What have we got here?
-        case HashDict.get(cache.store, key, nil) do
-            # Nothing.
-            nil   -> { :cache, cache, :not_found }
-            # Something.
-            entry ->
-                # If we are the tail, no need to reorder.
-                if cache.tail == entry.key do
-                    { :cache, cache, :value, entry.value }
-                else
-                    # We need to fix the gap that will exist after us then.                    
-                    
-                    # Are we the head?
-                    if cache.head == entry.key do
-                        # The head now points to our newer.
-                        cache = cache.head entry.newer
-                    end
+        get cache, cache.tail == key, HashDict.get(cache.store, key, nil)
+    end
 
-                    cache = cache |>
-                        # Save the newer to our store but pointing to our older.
-                        update(entry.newer, :older, entry.older) |>
-                        # Save the older to our store but pointing to our newer.
-                        update(entry.older, :newer, entry.newer) |>
-                        # Save the value of tail but pointing forward to us.
-                        update(cache.tail, :newer, entry.key)
+    # Item not found.
+    defp get(cache, _, nil), do: { cache, :not_found }
 
-                    # Save the store and return the value requested.
-                    {
-                        :cache, cache.update(
-                            # Save us.
-                            store: HashDict.put(
-                                cache.store, entry.key, entry.update(
-                                    # Nothing is newer.
-                                    newer: nil,
-                                    # We point back to what the tail was.
-                                    older: cache.tail
-                                )
-                            ),
-                            # ...and point to us as the tail.
-                            tail:  entry.key
-                        ),
-                        :value, entry.value
-                    }
-                end
+    # Item found but is a tail; no need to reorder.
+    defp get(cache, is_tail, entry) when is_tail do
+        { cache, :value, entry.value }
+    end
+
+    # Item found, need to fix the gap that will exist.
+    defp get(cache, _, entry) do
+        # Are we the head?
+        if cache.head == entry.key do
+            # The head now points to our newer.
+            cache = cache.head entry.newer
         end
+
+        cache = cache |>
+            # Save the newer to our store but pointing to our older.
+            update(entry.newer, :older, entry.older) |>
+            # Save the older to our store but pointing to our newer.
+            update(entry.older, :newer, entry.newer) |>
+            # Save the value of tail but pointing forward to us.
+            update(cache.tail, :newer, entry.key)
+
+        # Save the store and return the value requested.
+        {
+            cache.update(
+                # Save us.
+                store: HashDict.put(
+                    cache.store, entry.key, entry.update(
+                        # Nothing is newer.
+                        newer: nil,
+                        # We point back to what the tail was.
+                        older: cache.tail
+                    )
+                ),
+                # ...and point to us as the tail.
+                tail: entry.key
+            ),
+            :value, entry.value
+        }
     end
 
     # Update an attribute of an Entry and save it. Supports chaining.

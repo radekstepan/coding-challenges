@@ -14,8 +14,8 @@ Cache.to_string(cache)
 # Get an item from a cache by its key.
 case Cache.get(cache, { :key, "adam" }) do
     # When found.
-    { :cache, cache, :value, value } ->
+    { cache, :value, value } ->
     # When not found.
-    { :cache, cache, :not_found } ->
+    { cache, :not_found } ->
 end
 ```

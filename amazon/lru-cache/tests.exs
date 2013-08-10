@@ -25,7 +25,7 @@ defmodule Test do
 
         # Getting.
         case Cache.get(cache, { :key, "adam" }) do
-            { :cache, cache, :value, 29 } -> assert true
+            { cache, :value, 29 } -> assert true
             _ -> assert false
         end
 
@@ -34,15 +34,15 @@ defmodule Test do
         assert cache.tail == "adam"
 
         case Cache.get(cache, { :key, "john" }) do
-            { :cache, cache, :value, 26 } -> assert true
+            { cache, :value, 26 } -> assert true
             _ -> assert false
         end
         case Cache.get(cache, { :key, "angela" }) do
-            { :cache, cache, :value, 24 } -> assert true
+            { cache, :value, 24 } -> assert true
             _ -> assert false
         end
         case Cache.get(cache, { :key, "bob" }) do
-            { :cache, cache, :value, 48 } -> assert true
+            { cache, :value, 48 } -> assert true
             _ -> assert false
         end
 
@@ -50,7 +50,7 @@ defmodule Test do
         assert Cache.to_string(cache) === [ "adam", "john", "angela", "bob" ]
 
         case Cache.get(cache, { :key, "angela" }) do
-            { :cache, cache, :value, 24 } -> assert true
+            { cache, :value, 24 } -> assert true
             _ -> assert false
         end
 
