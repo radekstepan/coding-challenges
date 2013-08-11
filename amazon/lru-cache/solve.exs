@@ -48,23 +48,8 @@ defmodule Cache do
 
         # Have we reached our capacity?
         if cache.size == cache.limit do
-            # New head...
-            new_head = HashDict.get(
-                cache.store,
-                # ...is whatever was newer to the old head...
-                HashDict.get(cache.store, cache.head).newer
-            # ...poining back to nothing.
-            ).older nil
-            
-            cache = cache.update(
-                store: cache.store |>
-                    # Delete the old head...
-                    HashDict.delete(cache.head) |>
-                    # ...and save the new one in the store.
-                    HashDict.put(new_head.key, new_head),
-                # And the new head is next in line for a chop...
-                head: new_head.key
-            )
+            # Shift the head.
+            cache = shift cache
         else
             # Increase our size.
             cache = cache.update_size fn(old) -> old + 1 end
@@ -75,6 +60,27 @@ defmodule Cache do
             tail: key,
             # Save the entry & go at it again.
             store: HashDict.put(cache.store, key, entry)
+        )
+    end
+
+    # Shift an item from the head. Chains.
+    defp shift(cache) do
+        # New head...
+        new_head = HashDict.get(
+            cache.store,
+            # ...is whatever was newer to the old head...
+            HashDict.get(cache.store, cache.head).newer
+        # ...poining back to nothing.
+        ).older nil
+        
+        cache.update(
+            store: cache.store |>
+                # Delete the old head...
+                HashDict.delete(cache.head) |>
+                # ...and save the new one in the store.
+                HashDict.put(new_head.key, new_head),
+            # And the new head is next in line for a chop...
+            head: new_head.key
         )
     end
 
