@@ -1,0 +1,31 @@
+{{#if state.ready}}
+  {{#if state.message}}
+    Status message
+  {{else}}
+    <div id="filter">
+      <ul class="right">
+        <li>All</li>
+        <li>Go</li>
+        <li>JavaScript</li>
+      </ul>
+      <div class="left">Show</div>
+    </div>
+    {{#repos}}
+      <div id="repos">
+        <div class="repo">
+          <header>
+            <h2><a href="{{html_url}}" title="View {{name}} on Github">{{human(name)}}</a></h2>
+            <div class="meta">
+              <div class="stars"><span class="icon-stars" title="Stars"></span> {{stargazers_count}}</div>
+              <div class="forks"><span class="icon-forks" title="Forks"></span> {{forks_count}}</div>
+              <div class="lang">{{language}}</div>
+            </div>
+          </header>
+          <p>{{description}}</p>
+        </div>
+      </div>
+    {{/repos}}
+  {{/if}}
+{{else}}
+  Loading ...
+{{/if}}
