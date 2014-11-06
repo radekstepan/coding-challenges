@@ -1,12 +1,12 @@
 assert = require 'assert'
 
-{ human } = require '../src/utils/string.coffee'
+format = require '../src/utils/string.coffee'
 
 module.exports =
 
-  'string - human readable formatting': (done) ->
+  'string - numan readable formatting': (done) ->
 
-    formatted = ( human(text) for text in [
+    formatted = ( format.numan(text) for text in [
       '7geese-recognition-board'
       'hubot-on-dotcloud'
       'django-db-utils'

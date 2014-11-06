@@ -1,0 +1,237 @@
+@primary_color: #3CA2A2;
+@secondary_color: #DFECE6;
+@grey_color: #606D80;
+
+html {
+  min-height: 100%;
+  background: #F5F5F5;
+}
+
+body {
+  background: #FFF;
+}
+
+html, body {
+  font-family: "Museo500Regular";
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+a {
+  color: @primary_color;
+  text-decoration: none;
+  border-bottom: 1px solid @secondary_color;
+}
+
+#header {
+  padding: 26px 0;
+  background: #EEF6F8;
+  border-bottom: 1px solid #DEE7ED;
+
+  h1, h2 {
+    float: left;
+    margin: 0;
+  }
+
+  h1 {
+    height: 26px;
+    width: 134px;
+    background: url('../img/logo.png') no-repeat;
+    background-size: contain;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  h2 {
+    border-left: 2px solid #000;
+    color: @primary_color;
+    font-weight: normal;
+    padding-left: 12px;
+    margin-left: 14px;
+    font-size: 1.6em;
+  }
+
+  .clearfix();
+}
+
+#hero {
+  text-align: center;
+  margin: 40px 0;
+
+  p {
+    margin: 0;
+
+    &:first-child {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+#status {
+  text-align: center;
+  .user-select(none);
+  margin-bottom: 40px;
+  cursor: default;
+
+  .icon {
+    font-size: 2em;
+    margin: 0 10px;
+  }
+}
+
+#filter {
+  text-align: center;
+
+  ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      margin: 0 4px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-weight: bold;
+      color: darken(@grey_color, 10%);
+      .user-select(none);
+
+      &.active {
+        background: @secondary_color;
+        color: @primary_color;
+        .transition(background 200ms linear);
+        .border-radius(4px);
+      }
+    }
+  }
+}
+
+#repos {
+  margin-top: 40px;
+
+  .repo {
+    margin-bottom: 40px;
+    border: 2px solid @secondary_color;
+    padding: 20px;
+
+    header {
+      margin-bottom: 20px;
+
+      h3 {
+        float: left;
+        margin: 0;
+      }
+
+      .meta {
+        float: right;
+        line-height: 1.5em;
+
+        .nfo {
+          float: left;
+          color: darken(@grey_color, 10%);
+
+          &:not(:first-child) {
+            margin-left: 10px;
+          }
+
+          .icon {
+            font-size: 0.8em;
+          }
+
+          // See doda/github-language-colors
+          &.lang {
+            font-weight: bold;
+
+            &:before {
+              display: inline-block;
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              content: "";
+              margin-right: 6px;
+            }
+
+            &.css {
+              &:before {
+                background: #563D7C;
+              }
+            }
+
+            &.coffeescript {
+              &:before {
+                background: #244776;
+              }
+            }
+
+            &.dart {
+              &:before {
+                background: #98BAD6;
+              }
+            }
+
+            &.elixir {
+              &:before {
+                background: #6E4A7E;
+              }
+            }
+
+            &.javascript {
+              &:before {
+                background: #f15501;
+              }
+            }
+
+            &.objective-c {
+              &:before {
+                background: #438EFF;
+              }
+            }
+
+            &.php {
+              &:before {
+                background: #4F5D95;
+              }
+            }
+
+            &.python {
+              &:before {
+                background: #3581ba;
+              }
+            }
+
+            &.shell {
+              &:before {
+                background: #5861ce;
+              }
+            }
+          }
+        }
+
+        .clearfix();
+      }
+
+      .clearfix();
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.4em;
+      color: @grey_color;
+    }
+  }
+}
+
+#footer {
+  padding: 30px 0;
+  background: #F5F5F5;
+  border-top: 1px solid #E4E4E4;
+  font-size: 0.9em;
+  color: @grey_color;
+}

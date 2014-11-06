@@ -1,31 +1,47 @@
-{{#if state.ready}}
-  {{#if state.message}}
-    Status message
-  {{else}}
-    <div id="filter">
-      <ul class="right">
-        <li>All</li>
-        <li>Go</li>
-        <li>JavaScript</li>
-      </ul>
-      <div class="left">Show</div>
-    </div>
-    {{#repos}}
-      <div id="repos">
-        <div class="repo">
-          <header>
-            <h2><a href="{{html_url}}" title="View {{name}} on Github">{{human(name)}}</a></h2>
-            <div class="meta">
-              <div class="stars"><span class="icon-stars" title="Stars"></span> {{stargazers_count}}</div>
-              <div class="forks"><span class="icon-forks" title="Forks"></span> {{forks_count}}</div>
-              <div class="lang">{{language}}</div>
-            </div>
-          </header>
-          <p>{{description}}</p>
-        </div>
+{{#with state}}
+  {{#if ready}}
+    {{#if error}}
+      <div id="status">
+        <Icons icon="sadness"/> {{error}}
       </div>
-    {{/repos}}
+    {{else}}
+      {{#if langs.length}}
+        <div id="filter">
+          <ul>
+            <li on-click="select" {{^selected}}class="active"{{/selected}}>All</li>
+            {{#langs}}
+              <li on-click="select:{{name}}" {{#if selected == name}}class="active"{{/if}}>{{name}}</li>
+            {{/langs}}
+          </ul>
+        </div>
+      {{/if}}
+      {{#if repos.length}}
+        <div id="repos">
+          {{#repos}}
+            {{#if show(language)}}
+              <div class="repo" intro-outro='slide'>
+                <header>
+                  <div class="meta">
+                    <div class="nfo" title="Stars"><Icons icon="stars"/> {{stargazers_count}}</div>
+                    <div class="nfo" title="Forks"><Icons icon="forks"/> {{forks_count}}</div>
+                    {{#if language}}
+                      <div class="nfo lang {{language.toLowerCase()}}" title="Language">{{language}}</div>
+                    {{/if}}
+                  </div>
+                  <h3><a href="{{html_url}}" title="View {{name}} on GitHub">{{format.numan(name)}}</a></h3>
+                </header>
+                <p>{{description}}</p>
+              </div>
+            {{/if}}
+          {{/repos}}
+        </div>
+      {{else}}
+        No repos
+      {{/if}}
+    {{/if}}
+  {{else}}
+    <div id="status">
+      <Icons icon="spinner"/>
+    </div>
   {{/if}}
-{{else}}
-  Loading ...
-{{/if}}
+{{/with}}

@@ -2,9 +2,12 @@ Ractive = require 'ractive'
 
 # Fontello icon hex codes.
 codes =
-  'fork': '\e801'
-  'star': '\e802'
+  'forks':   '\e800'
+  'stars':   '\e801'
+  'spinner': '\e802'
+  'sadness': '\e803'
 
+# Renders icons by name.
 module.exports = Ractive.extend
 
   'template': require '../templates/icons.html'

@@ -1,27 +1,25 @@
 Ractive  = require 'ractive'
 Backbone = require 'backbone'
 
-require 'ractive-transitions-fade'
+# Load Ractive plugins.
+require 'ractive-transitions-slide'
 require 'ractive-adaptors-backbone'
 require 'ractive-ractive'
 
+# Component for rendering the actual repos.
 Repos = require './views/repos.coffee'
 
-config = require './models/config.coffee'
-repos  = require './models/repos.coffee'
-routes = require './modules/routes.coffee'
-
-Backbone.ajax = require './modules/request.coffee'
+# A collection of repos.
+repos = require './models/repos.coffee'
 
 new Ractive
   
-  'template': config.layout
+  'template': require './templates/layout.html'
 
   'el': 'body'
 
   'components': { Repos }
 
   onrender: ->
+    # Fetch the repos when ready.
     do repos.fetch
-
-    new Backbone.Router routes

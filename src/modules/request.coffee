@@ -1,5 +1,6 @@
 xhr = require 'xhr'
 
+# A tiny xhr module adding correct headers.
 module.exports = (req) ->
   xhr
     'uri': req.url

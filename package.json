@@ -23,7 +23,7 @@
     "ractive": "~0.6.1",
     "ractive-adaptors-backbone": "~0.2.0",
     "ractive-ractive": "~0.4.4",
-    "ractive-transitions-fade": "~0.1.2",
+    "ractive-transitions-slide": "~0.1.1",
     "backbone": "~1.1.2",
     "xhr": "~1.17.0",
     "underscore": "~1.7.0"
