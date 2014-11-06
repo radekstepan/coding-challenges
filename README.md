@@ -2,6 +2,7 @@
 
 Dashboard of GitHub open source projects.
 
+![Build Status](http://img.shields.io/codeship/05417400-43b6-0132-3a1e-26172f935df1.svg?style=flat)
 [![Dependencies](http://img.shields.io/david/radekstepan/sourceboard.svg?style=flat)](https://david-dm.org/radekstepan/sourceboard)
 [![License](http://img.shields.io/badge/license-AGPL--3.0-red.svg?style=flat)](LICENSE)
 
