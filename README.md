@@ -5,11 +5,11 @@ Dashboard of GitHub open source projects.
 [![Dependencies](http://img.shields.io/david/radekstepan/sourceboard.svg?style=flat)](https://david-dm.org/radekstepan/sourceboard)
 [![License](http://img.shields.io/badge/license-AGPL--3.0-red.svg?style=flat)](LICENSE)
 
-![image](https://raw.githubusercontent.com/radekstepan/sourceboard/master/public/img/screenshot.png)
+![image](https://raw.githubusercontent.com/radekstepan/sourceboard/master/public/img/screenshot.jpg)
 
 ##Customize
 
-To point to your own projects change the `url` property in `src/models/repos.coffee` according to the [api docs](https://developer.github.com/v3/repos/).
+To point to your **own projects** change the `url` property in `src/models/repos.coffee` according to the [api docs](https://developer.github.com/v3/repos/).
 
 [Ractive.js](http://www.ractivejs.org/) is being used for eventing and templating. You can see views in `src/views/` and mustache templates in `src/templates/`.
 

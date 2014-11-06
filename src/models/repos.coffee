@@ -10,6 +10,6 @@ class Repos extends Backbone.Collection
   'model': Repo
 
   # See https://developer.github.com/v3/repos
-  'url': 'https://api.github.com/users/radekstepan/repos'
+  'url': 'https://api.github.com/orgs/7Geese/repos'
 
 module.exports = new Repos()

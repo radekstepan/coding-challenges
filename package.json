@@ -1,7 +1,7 @@
 {
   "name": "sourceboard",
   "version": "0.0.0",
-  "description": "Dashboard of open source projects for GitHub user.",
+  "description": "Dashboard of GitHub open source projects",
   "author": "Radek Stepan <dev@radekstepan.com> (http://radekstepan.com)",
   "license": "AGPL-3.0",
   "keywords": [
