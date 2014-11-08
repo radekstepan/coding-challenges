@@ -19,14 +19,14 @@
   },
   "dependencies": {
     "async": "~0.9.0",
+    "backbone": "~1.1.2",
     "normalize.less": "^1.0.0",
     "ractive": "~0.6.1",
     "ractive-adaptors-backbone": "~0.2.0",
     "ractive-ractive": "~0.4.4",
     "ractive-transitions-slide": "~0.1.1",
-    "backbone": "~1.1.2",
-    "xhr": "~1.17.0",
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "xhr": "~1.17.0"
   },
   "devDependencies": {
     "browserify": "~6.2.0",
