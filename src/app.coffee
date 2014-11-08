@@ -21,5 +21,7 @@ new Ractive
   'components': { Repos }
 
   onrender: ->
+    document.title = '7Geese GitHub Community'
+
     # Fetch the repos when ready.
     do repos.fetch
