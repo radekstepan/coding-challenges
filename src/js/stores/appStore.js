@@ -61,6 +61,10 @@ class AppStore extends Store {
     this.set('window.count', Math.ceil(height / config.ITEM_HEIGHT));
   }
 
+  onEvtScroll(top) {
+    this.set('window.offset', top);
+  }
+
   // A mock xhr returning a query id of say CouchDB backend.
   xhrQuery(params, cb) {
     setTimeout(_.partial(cb, null, {
@@ -69,18 +73,18 @@ class AppStore extends Store {
     }), 1e3);
   }
 
-  // A mock xhr returning a item by id.
+  // A mock xhr returning items by id.
   xhrItems(ids, cb) {
     setTimeout(_.partial(cb, null, _.map(ids, (id) => {
       return {
         'id': id,
-        'name': faker.commerce.productName(),
+        'product': faker.commerce.productName(),
         'brand': faker.company.companyName(),
         'color': faker.commerce.color(),
         'material': faker.commerce.productMaterial(),
-        'price': '€' + faker.commerce.price()
+        'price': faker.commerce.price()
       }
-    })), 100);
+    })), _.random(200, 500));
   }
 
   // Load products.

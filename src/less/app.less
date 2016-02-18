@@ -4,7 +4,9 @@
 // LESS Mixins.
 @import "node_modules/lesshat/build/lesshat.less";
 
-@import url('https://fonts.googleapis.com/css?family=Abel');
+// Now our app.
+@import "fonts.less";
+@import "icons.less";
 
 html, head {
   height: 100%;
@@ -29,13 +31,26 @@ html, head {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    text-transform: capitalize;
   }
 
   #header {
-    background: #1A1A1A;
-    color: #5A5A5A;
+    background: #333;
     width: 100%;
     position: fixed;
+
+    .icon {
+      position: absolute;
+      top: 31px;
+      left: 50%;
+      color: #5A5A5A;
+      opacity: 0;
+
+      &.active {
+        opacity: 1;
+        .transition(opacity 500ms ease-out);
+      }
+    }
 
     .wrap {
       padding: 20px 2%;
@@ -45,6 +60,7 @@ html, head {
         background-size: 100%;
         width: 130px;
         height: 32px;
+        margin-right: 10px;
         display: inline-block;
       }
 
@@ -52,19 +68,24 @@ html, head {
         color: #FFF;
         font-size: 24px;
         display: inline-block;
-        margin: -19px 0 0 10px;
+        margin-top: -19px;
         vertical-align: middle;
       }
 
       .log {
+        color: #5A5A5A;
         float: right;
         line-height: 37px;
       }
     }
 
     .thead {
+      background: #E43D4E;
+      color: #FFF;
+
       .td {
-        color: grey;
+        padding: 1% 2%;
+        vertical-align: middle;
         cursor: pointer;
         .user-select(none);
       }
@@ -90,20 +111,12 @@ html, head {
 
       .wrap {
         .td {
-          &:first-child {
+          &.product {
             font-weight: bold;
           }
 
           &.active {
-            background: #FDFDFD;
-          }
-
-          .circle {
-            .border-radius(50%);
-            height: 10px;
-            width: 10px;
-            display: inline-block;
-            margin-right: 4px;
+            background: #FFFAFA;
           }
         }
       }

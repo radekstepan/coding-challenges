@@ -23,3 +23,5 @@ $ make watch
 $ make start-dev
 # book-list/0.0.0 (dev) started on port 8080
 ```
+
+559,239 items in 48.0.2564.82 Ubuntu 14.04 (64-bit)

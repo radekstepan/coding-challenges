@@ -354,6 +354,39 @@ td,
 th {
   padding: 0;
 }
+@font-face {
+  font-family: 'Fontello';
+  src: url("../fonts/fontello.eot");
+  src: url("../fonts/fontello.eot#iefix") format('embedded-opentype'), url("../fonts/fontello.woff") format('woff'), url("../fonts/fontello.ttf") format('truetype'), url("../fonts/fontello.svg#fontello") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.icon {
+  vertical-align: middle;
+  font-family: "Fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+}
+.icon[class^='spin'],
+.icon[class*=' spin'] {
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+lesshat-selector {
+  -lh-property: 0; } 
+@-webkit-keyframes spin{ from { -webkit-transform: rotate(0deg); } to { -webkit-transform: rotate(360deg); }}
+@-moz-keyframes spin{ from { -moz-transform: rotate(0deg); } to { -moz-transform: rotate(360deg); }}
+@-o-keyframes spin{ from { -o-transform: rotate(0deg); } to { -o-transform: rotate(360deg); }}
+@keyframes spin{ from {-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);transform: rotate(0deg); } to {-webkit-transform: rotate(360deg);-moz-transform: rotate(360deg);-ms-transform: rotate(360deg);transform: rotate(360deg); };
+}
 html,
 head {
   height: 100%;
@@ -380,12 +413,26 @@ head {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 #app #header {
-  background: #1A1A1A;
-  color: #5A5A5A;
+  background: #333;
   width: 100%;
   position: fixed;
+}
+#app #header .icon {
+  position: absolute;
+  top: 31px;
+  left: 50%;
+  color: #5A5A5A;
+  opacity: 0;
+}
+#app #header .icon.active {
+  opacity: 1;
+  -webkit-transition: opacity 500ms ease-out;
+  -moz-transition: opacity 500ms ease-out;
+  -o-transition: opacity 500ms ease-out;
+  transition: opacity 500ms ease-out;
 }
 #app #header .wrap {
   padding: 20px 2%;
@@ -395,21 +442,28 @@ head {
   background-size: 100%;
   width: 130px;
   height: 32px;
+  margin-right: 10px;
   display: inline-block;
 }
 #app #header .wrap .title {
   color: #FFF;
   font-size: 24px;
   display: inline-block;
-  margin: -19px 0 0 10px;
+  margin-top: -19px;
   vertical-align: middle;
 }
 #app #header .wrap .log {
+  color: #5A5A5A;
   float: right;
   line-height: 37px;
 }
+#app #header .thead {
+  background: #E43D4E;
+  color: #FFF;
+}
 #app #header .thead .td {
-  color: grey;
+  padding: 1% 2%;
+  vertical-align: middle;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -434,23 +488,11 @@ head {
   text-align: center;
   width: 100%;
 }
-#app #list .item .wrap .td:first-child {
+#app #list .item .wrap .td.product {
   font-weight: bold;
 }
 #app #list .item .wrap .td.active {
-  background: #FDFDFD;
-}
-#app #list .item .wrap .td .circle {
-  -webkit-border-radius: 50%;
-  -webkit-background-clip: padding-box;
-  -moz-border-radius: 50%;
-  -moz-background-clip: padding;
-  border-radius: 50%;
-  background-clip: padding-box;
-  height: 10px;
-  width: 10px;
-  display: inline-block;
-  margin-right: 4px;
+  background: #FFFAFA;
 }
 #app #list .item:last-child {
   border-bottom-color: transparent;
