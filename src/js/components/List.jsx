@@ -23,9 +23,6 @@ export default React.createClass({
     // Number of items below fold.
     let b = Math.max(0, query.count - a - viewport.count);
 
-    // Single item height.
-    let h = viewport.item;
-
     let ids = [];
 
     let items = _.map(_.range(Math.min(viewport.count, query.count - a)), (i) => {
@@ -67,7 +64,7 @@ export default React.createClass({
         <div
           key={id}
           className="item"
-          style={{ 'height': `${h}px`, 'lineHeight': `${h - 1}px` }}
+          style={{ 'height': `${viewport.item}px`, 'lineHeight': `${viewport.item - 1}px` }}
         >{content}</div>
       );
     });
@@ -77,9 +74,9 @@ export default React.createClass({
 
     return (
       <div id="list" style={{ 'height': viewport.height }} onScroll={this._onScroll} ref="el">
-        <div style={{ 'height': `${a * h}px` }} />
+        <div style={{ 'height': `${a * viewport.item}px` }} />
         <div>{items}</div>
-        <div style={{ 'height': `${b * h}px` }} />
+        <div style={{ 'height': `${b * viewport.item}px` }} />
       </div>
     );
   }

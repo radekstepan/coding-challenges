@@ -12,8 +12,6 @@ import Icon from '../Icon.jsx';
 
 import cache from '../../models/cache.js';
 
-import config from '../../../config.js';
-
 export default React.createClass({
 
   displayName: 'ProductsPage.jsx',
