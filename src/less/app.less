@@ -1,0 +1,116 @@
+// Vendor dependencies.
+@import "node_modules/normalize.less/normalize.less";
+
+// LESS Mixins.
+@import "node_modules/lesshat/build/lesshat.less";
+
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+html, head {
+  height: 100%;
+}
+
+#app {
+  font-family: 'Abel';
+  height: 100%;
+
+  #loading {
+    color: #5A5A5A;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    .transform(translate, -50%, -50%);
+  }
+
+  .td {
+    display: inline-block;
+    width: 16%;
+    padding: 0 2%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  #header {
+    background: #1A1A1A;
+    color: #5A5A5A;
+    width: 100%;
+    position: fixed;
+
+    .wrap {
+      padding: 20px 2%;
+
+      .logo {
+        background: url('/public/img/logo.png') no-repeat center;
+        background-size: 100%;
+        width: 130px;
+        height: 32px;
+        display: inline-block;
+      }
+
+      .title {
+        color: #FFF;
+        font-size: 24px;
+        display: inline-block;
+        margin: -19px 0 0 10px;
+        vertical-align: middle;
+      }
+
+      .log {
+        float: right;
+        line-height: 37px;
+      }
+    }
+
+    .thead {
+      .td {
+        color: grey;
+        cursor: pointer;
+        .user-select(none);
+      }
+    }
+  }
+
+  #list {
+    background: #FFF;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    overflow-y: scroll;
+
+    .item {
+      border-bottom: 1px solid #E0E0E0;
+      .box-sizing(border-box);
+      color: #1D1D1D;
+
+      .loading {
+        text-align: center;
+        width: 100%;
+      }
+
+      .wrap {
+        .td {
+          &:first-child {
+            font-weight: bold;
+          }
+
+          &.active {
+            background: #FDFDFD;
+          }
+
+          .circle {
+            .border-radius(50%);
+            height: 10px;
+            width: 10px;
+            display: inline-block;
+            margin-right: 4px;
+          }
+        }
+      }
+
+      &:last-child {
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}
