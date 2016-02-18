@@ -442,14 +442,14 @@ head {
   background-size: 100%;
   width: 130px;
   height: 32px;
-  margin-right: 10px;
+  margin-right: 14px;
   display: inline-block;
 }
 #app #header .wrap .title {
   color: #FFF;
   font-size: 24px;
   display: inline-block;
-  margin-top: -19px;
+  margin-top: -13px;
   vertical-align: middle;
 }
 #app #header .wrap .log {

@@ -54,7 +54,7 @@ export default React.createClass({
             {icon}
             {log}
             <div className="logo" />
-            <div className="title">product list</div>
+            <div className="title">Product List</div>
           </div>
           <div className="thead">
             {field('product')}

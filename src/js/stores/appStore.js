@@ -17,10 +17,10 @@ class AppStore extends Store {
       'system': {
         'loading': false
       },
-      'window': {
+      'viewport': {
         // Height of one item.
         'item': config.ITEM_HEIGHT,
-        // Offset from the top.
+        // Offset from the top (via scroll).
         'offset': 0
       },
       // Current products view query.
@@ -40,7 +40,7 @@ class AppStore extends Store {
       // Reset the cache.
       cache.reset();
       // Reset the scroll position.
-      this.set('window.offset', 0, false);
+      this.set('viewport.offset', 0, false);
     });
 
     // Debounce products getter.
@@ -56,13 +56,13 @@ class AppStore extends Store {
   evtResize() {
     let height = window.innerHeight - config.TOP_OFFSET;
     // Available space.
-    this.set('window.height', height);
+    this.set('viewport.height', height);
     // How many items can we show on one screen?
-    this.set('window.count', Math.ceil(height / config.ITEM_HEIGHT));
+    this.set('viewport.count', Math.ceil(height / config.ITEM_HEIGHT));
   }
 
   onEvtScroll(top) {
-    this.set('window.offset', top);
+    this.set('viewport.offset', top);
   }
 
   // A mock xhr returning a query id of say CouchDB backend.

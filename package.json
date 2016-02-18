@@ -1,7 +1,7 @@
 {
-  "name": "book-list",
+  "name": "product-list",
   "version": "0.0.0",
-  "description": "book-list app",
+  "description": "Display a million product results on a page (maybe)",
   "author": "Radek Stepan <dev@radekstepan.com> (http://radekstepan.com)",
   "private": true,
   "license": "LicenseRef-LICENSE",
@@ -51,6 +51,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/radekstepan/book-list.git"
+    "url": "git://github.com/radekstepan/product-list.git"
   }
 }

@@ -16,28 +16,28 @@ export default React.createClass({
   },
 
   render() {
-    let props = this.props;
+    let { query, viewport } = this.props;
 
     // Number of items offset at the top.
-    let a = Math.floor(props.window.offset / props.window.item);
+    let a = Math.floor(viewport.offset / viewport.item);
     // Number of items below fold.
-    let b = Math.max(0, props.query.count - a - props.window.count);
+    let b = Math.max(0, query.count - a - viewport.count);
 
     // Single item height.
-    let h = props.window.item;
+    let h = viewport.item;
 
     let ids = [];
 
-    let items = _.map(_.range(Math.min(props.window.count, props.query.count - a)), (i) => {
+    let items = _.map(_.range(Math.min(viewport.count, query.count - a)), (i) => {
       // Generate the item id.
-      let id = `${props.query.queryId}-${a + i}`;
+      let id = `${query.queryId}-${a + i}`;
 
       let field = (key, format) => {
         return (
           <div
             key={key}
             title={item[key]}
-            className={cls('td', { 'active': props.query.params && props.query.params.sort == key, [`${key}`]: true })}
+            className={cls('td', { 'active': query.params && query.params.sort == key, [`${key}`]: true })}
           >
             {format ? numeral(item[key]).format(format) : item[key]}
           </div>
@@ -76,7 +76,7 @@ export default React.createClass({
     process.nextTick(() => actions.emit('products.get', ids));
 
     return (
-      <div id="list" style={{ 'height': props.window.height }} onScroll={this._onScroll} ref="el">
+      <div id="list" style={{ 'height': viewport.height }} onScroll={this._onScroll} ref="el">
         <div style={{ 'height': `${a * h}px` }} />
         <div>{items}</div>
         <div style={{ 'height': `${b * h}px` }} />
