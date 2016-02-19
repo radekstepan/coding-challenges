@@ -42,3 +42,5 @@ Since we have a unique `queryId` for each products results set, know the size of
 ###Cache
 
 An LRU cache deals with the issue of holding large chunks of product data. Its size can be configured and based on this setting the cache holds onto product data until they are overwritten by new ones. In an ideal Flux architecture, we would be passing the cache-resolved items as a list/object into the component, but this would result in collection duplication, thus we optimize by making a singleton cache globally available.
+
+Note that the size of the cache needs to be at least that of the amount of products we can show on the screen.
