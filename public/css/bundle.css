@@ -462,7 +462,7 @@ head {
   color: #FFF;
 }
 #app #header .thead .td {
-  padding: 1% 2%;
+  padding: 10px 2%;
   vertical-align: middle;
   cursor: pointer;
   -webkit-user-select: none;
