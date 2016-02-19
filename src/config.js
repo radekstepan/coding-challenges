@@ -6,5 +6,5 @@ export default {
   // How many items to keep in the LRU cache?
   'CACHE_SIZE': 1e4,
   // How long to wait after last scroll to fetch products.
-  'SCROLL_DEBOUNCE': 500
+  'SCROLL_DEBOUNCE': 300
 };

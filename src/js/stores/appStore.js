@@ -44,7 +44,7 @@ class AppStore extends Store {
     });
 
     // Debounce products getter.
-    this.onProductsGet = _.debounce(this.onProductsGet, config.SCROLL_DEBOUNCE);
+    this.onProductsGet = _.debounce(this.onProductsGet, config.SCROLL_DEBOUNCE, { 'maxWait': config.SCROLL_DEBOUNCE * 3 });
 
     if (!process.browser) return;
 
@@ -109,10 +109,15 @@ class AppStore extends Store {
     let cb = this.cb((err, arr) => {
       if (err) throw err;
       _.each(arr, (item) => {
+        // NOTE: items can arrive by the time they have already been filled in.
+        if (cache.has(item.id)) return;
+        // Save the item into cache.
         cache.set(item.id, item);
-        // Emit a single event saying we have these items now.
-        this.emit(`$cache.${item.id}`, item.id);
       });
+
+      // Emit a single event saying we have these items now.
+      //  NOTE: reduces the amount of events being responded to.
+      this.emit(`$cache`, 'new');
     });
 
     // Xhr then.

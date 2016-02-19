@@ -10,7 +10,7 @@ Shows (upto, browser-dependent) 1m product results on one page. Example of React
 $ nvm use
 $ npm install
 $ npm start
-# product-list/0.0.1 started on port 8080
+# product-list/0.0.2 started on port 8080
 ```
 
 ##Architecture
