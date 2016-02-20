@@ -105,8 +105,12 @@ html, head {
       color: #1D1D1D;
 
       &:hover {
-        background: #FBEEC2;
         cursor: pointer;
+
+        .td {
+          .transition(background-color 0.2s ease);
+          background-color: #FFF8E0 !important;
+        }
       }
 
       .loading {

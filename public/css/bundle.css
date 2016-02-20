@@ -485,8 +485,14 @@ head {
   color: #1D1D1D;
 }
 #app #list .item:hover {
-  background: #FBEEC2;
   cursor: pointer;
+}
+#app #list .item:hover .td {
+  -webkit-transition: background-color 0.2s ease;
+  -moz-transition: background-color 0.2s ease;
+  -o-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  background-color: #FFF8E0 !important;
 }
 #app #list .item .loading {
   text-align: center;
