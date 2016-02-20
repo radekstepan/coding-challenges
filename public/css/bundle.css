@@ -484,6 +484,10 @@ head {
   box-sizing: border-box;
   color: #1D1D1D;
 }
+#app #list .item:hover {
+  background: #FBEEC2;
+  cursor: pointer;
+}
 #app #list .item .loading {
   text-align: center;
   width: 100%;
