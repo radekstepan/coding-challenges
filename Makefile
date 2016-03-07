@@ -10,7 +10,7 @@ BIN        = ./bin/run.js
 
 NAME       = react-login
 
-MOCHA-OPTS = --compilers js:babel-register --ui exports --timeout 5000 --bail
+MOCHA-OPTS = --compilers js:babel-register --ui exports --timeout 5000 --slow 2000 --bail
 
 start:
 	${BIN}
