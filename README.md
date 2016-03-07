@@ -11,9 +11,9 @@ Login form in [React](http://facebook.github.io/react/)/[Flux](http://facebook.g
 ##Quickstart
 
 ```bash
+$ git clone git@github.com:radekstepan/react-login.git && cd react-login
 $ nvm use
 $ npm install
-$ make watch
-$ make start-dev
-# react-login/0.0.1 (dev) started on port 8080
+$ npm start
+# react-login/0.0.1 started on port 8080
 ```
