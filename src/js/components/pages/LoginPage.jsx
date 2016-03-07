@@ -39,11 +39,6 @@ export default React.createClass({
     return { 'email': null, 'password': null };
   },
 
-  // Focus on email input field.
-  componentDidMount() {
-    process.nextTick(() => this.refs.email.focus());
-  },
-
   render() {
     let { app } = this.state;
 
@@ -76,6 +71,7 @@ export default React.createClass({
             className="input"
             placeholder={CONST.USER.EMAIL}
             autoCorrect="off"
+            autoFocus={true}
             onChange={this._onInput.bind(this, 'email')}
           />
         </div>

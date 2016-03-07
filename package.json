@@ -1,6 +1,6 @@
 {
   "name": "react-login",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Login form in React/Flux",
   "author": "Radek Stepan <dev@radekstepan.com> (http://radekstepan.com)",
   "private": true,

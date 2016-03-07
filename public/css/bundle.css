@@ -420,6 +420,7 @@ body {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
+  color: #FFF;
   min-height: 100%;
   width: 100%;
   background: rgba(12, 5, 8, 0.7);
@@ -498,7 +499,6 @@ body {
   box-shadow: 0 0 #0c619a;
 }
 #form .title {
-  color: #FFF;
   border-bottom: 2px solid #52253A;
   display: inline-block;
   font-size: 30px;

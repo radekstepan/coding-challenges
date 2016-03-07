@@ -1,18 +1,12 @@
 #react-login
 
-A [React](http://facebook.github.io/react/) app utilizing a [Flux](http://facebook.github.io/flux/) architecture.
+Login form in [React](http://facebook.github.io/react/)/[Flux](http://facebook.github.io/flux/).
 
-- EventEmitter listeners can use RegExp paths thus allowing the use of namespaces
-- routing resets the whole UI between page changes and so Components are easier to reason about (`componentDidMount`)
-- store `cb` registers long-running functions and cleans them up on component unmount
-- can be run (1) from NPM, (2) via GitHub Pages and (3) locally via dev server
+[![Build Status](https://img.shields.io/travis/radekstepan/react-login/master.svg?style=flat)](https://travis-ci.org/radekstepan/react-login)
+[![Dependencies](http://img.shields.io/david/radekstepan/react-login.svg?style=flat)](https://david-dm.org/radekstepan/react-login)
+[![License](http://img.shields.io/badge/license-AGPL--3.0-red.svg?style=flat)](LICENSE)
 
-To start a project off this repo:
-
-```bash
-$ npm install -g create-project
-$ create-project <name> radekstepan/react-create-project
-```
+![image](https://raw.githubusercontent.com/radekstepan/react-login/master/screenshot.jpg)
 
 ##Quickstart
 
@@ -21,5 +15,5 @@ $ nvm use
 $ npm install
 $ make watch
 $ make start-dev
-# react-login/0.0.0 (dev) started on port 8080
+# react-login/0.0.1 (dev) started on port 8080
 ```
