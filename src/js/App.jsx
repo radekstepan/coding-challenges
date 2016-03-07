@@ -2,7 +2,7 @@ import React from 'react';
 import { RouterMixin, navigate } from 'react-mini-router';
 import _ from 'lodash';
 
-import HomePage from './components/pages/HomePage.jsx';
+import LoginPage from './components/pages/LoginPage.jsx';
 import NotFoundPage from './components/pages/NotFoundPage.jsx';
 
 import actions from './actions/appActions.js';
@@ -14,7 +14,7 @@ delete RouterMixin.handleClick;
 
 // Values are function names below.
 let routes = {
-  '/': 'home'
+  '/': 'login'
 };
 
 let blank = false;
@@ -74,9 +74,8 @@ export default React.createClass({
   },
 
   // Index.
-  home() {
-    process.nextTick(() => actions.emit('xhr'));
-    return <HomePage />;
+  login() {
+    return <LoginPage />;
   },
 
   // 404.

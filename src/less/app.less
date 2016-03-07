@@ -3,3 +3,108 @@
 
 // LESS Mixins.
 @import "node_modules/lesshat/build/lesshat.less";
+
+// Now our app.
+@import "fonts.less";
+@import "icons.less";
+
+@primary: #005F6B;
+@secondary: darken(@primary, 10%);
+@background: fade(darken(@primary, 20%), 70%);
+@grey: #9092A1;
+
+@mobile: ~"only screen and (max-width: 480px)";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: url('../img/unsplash-1.jpg') center;
+  .background-size(cover);
+}
+
+#app {
+  .display(flex);
+  .align-items(center);
+  .flex-direction(column);
+  .justify-content(center);
+  min-height: 100%;
+  width: 100%;
+  background: @background;
+}
+
+#form {
+  padding: 20px;
+  width: 400px;
+  .box-sizing(border-box);
+  font-family: 'Abel';
+  font-size: 20px;
+  text-transform: uppercase;
+  .user-select(none);
+  cursor: default;
+
+  @media @mobile {
+    width: 100%;
+  }
+
+  .title {
+    color: #FFF;
+    border-bottom: 2px solid @primary;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .field {
+    margin-bottom: 20px;
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: @grey;
+      font-size: 16px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 10px 8px;
+      .box-sizing(border-box);
+      border: 0;
+      color: #FFF;
+      font-weight: bold;
+      background: fade(@grey, 25%);
+      .border-radius(4px);
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .button {
+    margin-top: 16px;
+    background: @primary;
+    width: 100%;
+    border: 0;
+    color: #FFF;
+    padding: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    outline: none;
+    .box-shadow(0 6px @secondary);
+    .border-radius(4px);
+
+    &:hover {
+      .box-shadow(0 4px @secondary);
+      top: 2px;
+    }
+
+    &:active {
+      .box-shadow(0 0 @secondary);
+      top: 6px;
+    }
+  }
+}
