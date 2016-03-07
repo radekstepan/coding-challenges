@@ -422,7 +422,7 @@ body {
   justify-content: center;
   min-height: 100%;
   width: 100%;
-  background: rgba(0, 4, 5, 0.7);
+  background: rgba(12, 5, 8, 0.7);
 }
 #form {
   padding: 20px;
@@ -446,60 +446,60 @@ body {
   }
 }
 #form.notify.ok .button {
-  background: #79BD9A;
-  -webkit-box-shadow: 0 6px #57ac80;
-  -moz-box-shadow: 0 6px #57ac80;
-  box-shadow: 0 6px #57ac80;
+  background: #00917E;
+  -webkit-box-shadow: 0 6px #005e52;
+  -moz-box-shadow: 0 6px #005e52;
+  box-shadow: 0 6px #005e52;
 }
 #form.notify.ok .button:hover {
-  -webkit-box-shadow: 0 4px #57ac80;
-  -moz-box-shadow: 0 4px #57ac80;
-  box-shadow: 0 4px #57ac80;
+  -webkit-box-shadow: 0 4px #005e52;
+  -moz-box-shadow: 0 4px #005e52;
+  box-shadow: 0 4px #005e52;
 }
 #form.notify.ok .button:active {
-  -webkit-box-shadow: 0 0 #57ac80;
-  -moz-box-shadow: 0 0 #57ac80;
-  box-shadow: 0 0 #57ac80;
+  -webkit-box-shadow: 0 0 #005e52;
+  -moz-box-shadow: 0 0 #005e52;
+  box-shadow: 0 0 #005e52;
 }
 #form.notify.fail .button {
-  background: #CC2A41;
-  -webkit-box-shadow: 0 6px #a22134;
-  -moz-box-shadow: 0 6px #a22134;
-  box-shadow: 0 6px #a22134;
+  background: #A61416;
+  -webkit-box-shadow: 0 6px #780f10;
+  -moz-box-shadow: 0 6px #780f10;
+  box-shadow: 0 6px #780f10;
 }
 #form.notify.fail .button:hover {
-  -webkit-box-shadow: 0 4px #a22134;
-  -moz-box-shadow: 0 4px #a22134;
-  box-shadow: 0 4px #a22134;
+  -webkit-box-shadow: 0 4px #780f10;
+  -moz-box-shadow: 0 4px #780f10;
+  box-shadow: 0 4px #780f10;
 }
 #form.notify.fail .button:active {
-  -webkit-box-shadow: 0 0 #a22134;
-  -moz-box-shadow: 0 0 #a22134;
-  box-shadow: 0 0 #a22134;
+  -webkit-box-shadow: 0 0 #780f10;
+  -moz-box-shadow: 0 0 #780f10;
+  box-shadow: 0 0 #780f10;
 }
 #form.notify .button {
   height: 100%;
   max-height: 100%;
   position: absolute;
   top: 0;
-  background: #26ADE4;
-  -webkit-box-shadow: 0 6px #188fbf;
-  -moz-box-shadow: 0 6px #188fbf;
-  box-shadow: 0 6px #188fbf;
+  background: #107FC9;
+  -webkit-box-shadow: 0 6px #0c619a;
+  -moz-box-shadow: 0 6px #0c619a;
+  box-shadow: 0 6px #0c619a;
 }
 #form.notify .button:hover {
-  -webkit-box-shadow: 0 4px #188fbf;
-  -moz-box-shadow: 0 4px #188fbf;
-  box-shadow: 0 4px #188fbf;
+  -webkit-box-shadow: 0 4px #0c619a;
+  -moz-box-shadow: 0 4px #0c619a;
+  box-shadow: 0 4px #0c619a;
 }
 #form.notify .button:active {
-  -webkit-box-shadow: 0 0 #188fbf;
-  -moz-box-shadow: 0 0 #188fbf;
-  box-shadow: 0 0 #188fbf;
+  -webkit-box-shadow: 0 0 #0c619a;
+  -moz-box-shadow: 0 0 #0c619a;
+  box-shadow: 0 0 #0c619a;
 }
 #form .title {
   color: #FFF;
-  border-bottom: 2px solid #005F6B;
+  border-bottom: 2px solid #52253A;
   display: inline-block;
   font-size: 30px;
   font-weight: bold;
@@ -550,20 +550,28 @@ body {
   -moz-background-clip: padding;
   border-radius: 4px;
   background-clip: padding-box;
-  background: #005F6B;
-  -webkit-box-shadow: 0 6px #003238;
-  -moz-box-shadow: 0 6px #003238;
-  box-shadow: 0 6px #003238;
+  background: #52253A;
+  -webkit-box-shadow: 0 6px #2f1521;
+  -moz-box-shadow: 0 6px #2f1521;
+  box-shadow: 0 6px #2f1521;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
 }
 #form .button:hover {
-  -webkit-box-shadow: 0 4px #003238;
-  -moz-box-shadow: 0 4px #003238;
-  box-shadow: 0 4px #003238;
+  -webkit-box-shadow: 0 4px #2f1521;
+  -moz-box-shadow: 0 4px #2f1521;
+  box-shadow: 0 4px #2f1521;
 }
 #form .button:active {
-  -webkit-box-shadow: 0 0 #003238;
-  -moz-box-shadow: 0 0 #003238;
-  box-shadow: 0 0 #003238;
+  -webkit-box-shadow: 0 0 #2f1521;
+  -moz-box-shadow: 0 0 #2f1521;
+  box-shadow: 0 0 #2f1521;
+}
+#form .button .icon {
+  display: block;
+  margin-bottom: 10px;
 }
 #form .button:hover {
   top: 2px;

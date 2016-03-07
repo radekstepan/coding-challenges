@@ -9,12 +9,11 @@
 @import "icons.less";
 
 // Color definitions.
-@primary: #005F6B;
-@background: fade(darken(@primary, 20%), 70%);
+@primary: #52253A;
 @grey: #9092A1;
-@loading: #26ADE4;
-@ok: #79BD9A;
-@fail: #CC2A41;
+@loading: #107FC9;
+@ok: #00917E;
+@fail: #A61416;
 
 // Mobile breakpoint.
 @mobile: ~"only screen and (max-width: 480px)";
@@ -51,7 +50,7 @@ body {
   .justify-content(center);
   min-height: 100%;
   width: 100%;
-  background: @background;
+  background: fade(darken(@primary, 20%), 70%);
 }
 
 #form {
@@ -135,6 +134,12 @@ body {
     background: @primary;
     .border-radius(4px);
     .button(@primary);
+    .transition(all 0.1s ease-out);
+
+    .icon {
+      display: block;
+      margin-bottom: 10px;
+    }
 
     &:hover {
       top: 2px;

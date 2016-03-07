@@ -2,7 +2,9 @@ import React from 'react';
 
 // Fontello icon hex codes.
 let codes = {
-  'delete': '\e800' // Font Awesome - trash-empty
+  'spin': '\e800', // Fontelico - spin6
+  'ok': '\e801',   // Font Awesome - ok
+  'fail': '\e802'  // Font Awesome - cancel
 };
 
 export default React.createClass({

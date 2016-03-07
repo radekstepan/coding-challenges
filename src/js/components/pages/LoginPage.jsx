@@ -3,6 +3,8 @@ import cls from 'classnames';
 
 import Page from '../../lib/PageMixin.js';
 
+import Icon from '../Icon.jsx';
+
 import actions from '../../actions/appActions.js';
 
 import CONST from '../../../constants.json';
@@ -48,15 +50,15 @@ export default React.createClass({
     // Do we notify about something?
     let notify, content, ok, fail;
     if (notify = app.system.loading) {
-      content = <div>logging you in</div>;
+      content = <div><Icon name="spin" />logging you in</div>;
     } else {
       if (notify = !!app.user) {
         if (app.user.error) {
           fail = true;
-          content = app.user.error;
+          content = <div><Icon name="fail" />{app.user.error}</div>;
         } else {
           ok = true;
-          content = <div>welcome back!</div>;
+          content = <div><Icon name="ok" />welcome back!</div>;
         }
       } else {
         content = <div>login</div>;
