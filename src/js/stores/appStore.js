@@ -5,7 +5,7 @@ import Store from '../lib/Store.js';
 
 import actions from '../actions/appActions.js';
 
-import config from '../../config.js';
+import CONST from '../../constants.json';
 
 class AppStore extends Store {
 
@@ -14,7 +14,9 @@ class AppStore extends Store {
     super({
       'system': {
         'loading': false
-      }
+      },
+      // Awaiting input.
+      'user': null
     });
 
     // Listen to all app actions.
@@ -25,44 +27,44 @@ class AppStore extends Store {
     });
   }
 
-  // A mock xhr that checks email & password on the server.
-  xhr(user, cb) {
-    setTimeout(() => {
-      if (user.password === 'password') {
-        cb('You are not authorized to view this page');
-      } else {
-        cb(null, _.extend(user, { 'id': 1 }));
+  login(input, cb) {
+    // Check input.
+    for (let field in input) {
+      if (!input[field] || input[field].length < 8) {
+        // `The ${field} is too short`
+        return cb(CONST.ERROR.FIELD_LENGTH.replace('%', field));
       }
-    }, 1e3);
+    }
+
+    // Check email is email.
+    if (!emailRegex({ 'exact': true }).test(input.email)) {
+      return cb(CONST.ERROR.EMAIL);
+    }
+
+    // Mock xhr.
+    setTimeout(this.cb(() => {
+      if (input.password === 'password') {
+        cb(null, _.extend(input, { 'id': 1 }));
+      } else {
+        cb(CONST.ERROR.AUTH);
+      }
+    }), 1e3);
   }
 
   onSystemLoading(state) {
     this.set('system.loading', state);
   }
 
+  // Log user in.
   onUserLogin(input) {
-    let done = (err, user) => {
-      if (err) {
-        this.set('user.error', err);
-      } else {
-        this.set('user', user);
-      }
-    };
+    this.login(input, (error, user) => {
+      this.set('user', error ? { error } : user);
+    });
+  }
 
-    // Check input.
-    for (let field in input) {
-      if (!input[field] || input[field].length < 8) {
-        return done(`The ${field} is too short`);
-      }
-    }
-
-    // Check email is email.
-    if (!emailRegex({ 'exact': true }).test(input.email)) {
-      return done('The email is not valid');
-    }
-
-    // Xhr credentials check.
-    this.xhr(input, this.cb(done));
+  // Clear user state so we can start over.
+  onUserClear() {
+    this.set('user', null);
   }
 
 }
