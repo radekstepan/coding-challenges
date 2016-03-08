@@ -33805,7 +33805,7 @@ var AppStore = function (_Store) {
 
       // Mock xhr.
       setTimeout(this.cb(function () {
-        if (input.password === 'password') {
+        if (input.password === _constants2.default.USER.PASS) {
           cb(null, _lodash2.default.extend(input, { 'id': 1 }));
         } else {
           cb(_constants2.default.ERROR.AUTH);

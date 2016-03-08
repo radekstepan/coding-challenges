@@ -43,7 +43,7 @@ class AppStore extends Store {
 
     // Mock xhr.
     setTimeout(this.cb(() => {
-      if (input.password === 'password') {
+      if (input.password === CONST.USER.PASS) {
         cb(null, _.extend(input, { 'id': 1 }));
       } else {
         cb(CONST.ERROR.AUTH);
