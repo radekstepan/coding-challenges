@@ -29,7 +29,7 @@ class AppStore extends Store {
 
   login(input, cb) {
     // Check input.
-    for (let field in input) {
+    for (let field of [ 'email', 'password' ]) {
       if (!input[field] || input[field].length < 8) {
         // `The ${field} is too short`
         return cb(CONST.ERROR.FIELD_LENGTH.replace('%', field));

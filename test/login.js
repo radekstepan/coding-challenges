@@ -35,7 +35,7 @@ for (let name in fixtures) {
       if (test.err) {
         assert.equal(err, test.err);
       } else {
-        assert.ok(err);
+        assert.isNull(err, 'there was no error');
       }
 
       done();

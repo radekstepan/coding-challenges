@@ -33791,7 +33791,9 @@ var AppStore = function (_Store) {
     key: 'login',
     value: function login(input, cb) {
       // Check input.
-      for (var field in input) {
+      var _arr = ['email', 'password'];
+      for (var _i = 0; _i < _arr.length; _i++) {
+        var field = _arr[_i];
         if (!input[field] || input[field].length < 8) {
           // `The ${field} is too short`
           return cb(_constants2.default.ERROR.FIELD_LENGTH.replace('%', field));
