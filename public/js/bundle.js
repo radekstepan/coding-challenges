@@ -33235,10 +33235,12 @@ exports.default = _react2.default.createClass({
   render: function render() {
     var app = this.state.app;
 
-    // Do we notify about something?
+    // Default login button.
 
+    var content = 'login';
+
+    // Do we notify about something?
     var notify = void 0,
-        content = void 0,
         ok = void 0,
         fail = void 0;
     if (notify = app.system.loading) {
@@ -33267,18 +33269,12 @@ exports.default = _react2.default.createClass({
             'welcome back!'
           );
         }
-      } else {
-        content = _react2.default.createElement(
-          'div',
-          null,
-          'login'
-        );
       }
     }
 
     return _react2.default.createElement(
       'div',
-      { id: 'form', className: (0, _classnames2.default)({ notify: notify, 'ok': ok, 'fail': fail }) },
+      { id: 'form', className: (0, _classnames2.default)({ notify: notify, ok: ok, fail: fail }) },
       _react2.default.createElement(
         'div',
         { className: 'title' },

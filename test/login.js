@@ -4,6 +4,7 @@ import store from '../src/js/stores/appStore.js';
 
 import CONST from '../src/constants.json';
 
+// Sets of inputs and outputs we expect.
 let fixtures = {
   'fail field length': {
     'email': CONST.USER.EMAIL,

@@ -42,8 +42,11 @@ export default React.createClass({
   render() {
     let { app } = this.state;
 
+    // Default login button.
+    let content = 'login';
+
     // Do we notify about something?
-    let notify, content, ok, fail;
+    let notify, ok, fail;
     if (notify = app.system.loading) {
       content = <div><Icon name="spin" />logging you in</div>;
     } else {
@@ -55,13 +58,11 @@ export default React.createClass({
           ok = true;
           content = <div><Icon name="ok" />welcome back!</div>;
         }
-      } else {
-        content = <div>login</div>;
       }
     }
 
     return (
-      <div id="form" className={cls({ notify, 'ok': ok, 'fail': fail })}>
+      <div id="form" className={cls({ notify, ok, fail })}>
         <div className="title">login</div>
         <div className="field">
           <div className="label">email</div>
