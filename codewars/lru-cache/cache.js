@@ -124,7 +124,10 @@ module.exports = function Cache(capacity, obj = {}) {
           return list.get(property);
       }
     },
-    ownKeys: (target) => list.keys(),
+    ownKeys: (target) => {
+      console.log(list.keys());
+      return list.keys();
+    },
   });
 
   return proxy;
