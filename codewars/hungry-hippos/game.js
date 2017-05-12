@@ -1,31 +1,10 @@
+const List = require('../../generic/linked-list/list.js');
+
 function Game(board){
   this.board = board;
-}
-
-// Linked list.
-Game.prototype.link = function(a, b, l) {
-  [ a, b ] = a > b ? [ b, a ] : [ a, b ];
-  let n;
-  if (n = l[a]) {
-    while (n.n != null && n.n <= b) {
-      n = l[n.n];
-    }
-    // We are linked.
-    if (n.v && n.v === b) return true;
-    // Need to add the link.
-    l[b] = { v: b, p: n.v, n: n.n };
-    if (n.n) l[n.n].p = b;
-    if (n.p) l[n.p].n = b;
-  } else {
-    if (!(n = l[b])) {
-      n = l[b] = { v: b, p: null, n: null };
-    }
-    if (n.p) l[n.p].n = a;
-
-    l[a] = { v: a, n: b, p: n.p };
-  }
-
-  return false;
+  this.list = new List(function(a, b) {
+    return parseInt(a, 10) < parseInt(b, 10);
+  });
 }
 
 Game.prototype.play = function() {
@@ -39,13 +18,12 @@ Game.prototype.play = function() {
         const a = (i && g[i - 1][j]) ? g[i - 1][j] : 0;
         // Is the square to the west part of an area?
         const b = (j && g[i][j - 1]) ? g[i][j - 1] : 0;
-        // console.log(i, j, a, b, c);
         // Contiguous area, potential link.
         if (i + j > 0 && a && b) {
           // A link of two areas?
           if (a !== b) {
             // Did we know about this?
-            if (!this.link(a, b, l)) c--;
+            if (!this.list.link(a, b)) c--;
           }
           // Set as being part of this area.
           g[i][j] = a;
@@ -60,6 +38,7 @@ Game.prototype.play = function() {
           c++;
           g[i][j] = ++k;
         }
+        console.log(i, j, a, b, c);
       }
     }
     this.rows.push(c);

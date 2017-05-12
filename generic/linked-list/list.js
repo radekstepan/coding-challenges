@@ -1,5 +1,8 @@
-function List() {
+function List(cmp) {
   this.map = {};
+  this.cmp = cmp || function(a, b) {
+    return a.localeCompare(b) < 0;
+  };
 }
 
 List.prototype.add = function(key) {
@@ -16,7 +19,7 @@ List.prototype.get = function(key) {
 
 List.prototype.link = function(a, b) {
   this.add(a).add(b);
-  [ a, b ] = a > b ? [ b, a ] : [ a, b ];
+  [ a, b ] = this.cmp(a, b) ? [ a, b ] : [ b, a ];
 
   // Lookup ordered position for b.
   let node = this.map[a];
