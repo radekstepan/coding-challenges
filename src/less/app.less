@@ -1,0 +1,138 @@
+// Vendor dependencies.
+@import "node_modules/normalize.less/normalize.less";
+
+// LESS Mixins.
+@import "node_modules/lesshat/build/lesshat.less";
+
+// Now our app.
+@import "fonts.less";
+@import "icons.less";
+
+html, head {
+  height: 100%;
+}
+
+#app {
+  font-family: 'Abel';
+  height: 100%;
+
+  #loading {
+    color: #5A5A5A;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    .transform(translate, -50%, -50%);
+  }
+
+  .td {
+    display: inline-block;
+    width: 16%;
+    padding: 0 2%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-transform: capitalize;
+  }
+
+  #header {
+    background: #333;
+    width: 100%;
+    position: fixed;
+
+    .icon {
+      position: absolute;
+      top: 31px;
+      left: 50%;
+      color: #5A5A5A;
+      opacity: 0;
+
+      &.active {
+        opacity: 1;
+        .transition(opacity 500ms ease-out);
+      }
+    }
+
+    .wrap {
+      padding: 20px 2%;
+
+      .logo {
+        background: url('../img/logo.png') no-repeat center;
+        background-size: 100%;
+        width: 130px;
+        height: 32px;
+        margin-right: 14px;
+        display: inline-block;
+      }
+
+      .title {
+        color: #FFF;
+        font-size: 24px;
+        display: inline-block;
+        margin-top: -13px;
+        vertical-align: middle;
+      }
+
+      .log {
+        color: #5A5A5A;
+        float: right;
+        line-height: 37px;
+      }
+    }
+
+    .thead {
+      background: #E43D4E;
+      color: #FFF;
+
+      .td {
+        padding: 10px 2%;
+        vertical-align: middle;
+        cursor: pointer;
+        .user-select(none);
+      }
+    }
+  }
+
+  #list {
+    background: #FFF;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    overflow-y: scroll;
+
+    .item {
+      border-bottom: 1px solid #E0E0E0;
+      .box-sizing(border-box);
+      color: #1D1D1D;
+
+      &:hover {
+        cursor: pointer;
+
+        .td {
+          .transition(background-color 0.2s ease);
+          background-color: #FFF8E0 !important;
+        }
+      }
+
+      .loading {
+        text-align: center;
+        width: 100%;
+      }
+
+      .wrap {
+        .td {
+          &.product {
+            font-weight: bold;
+          }
+
+          &.active {
+            background: #FFFAFA;
+          }
+        }
+      }
+
+      &:last-child {
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}
