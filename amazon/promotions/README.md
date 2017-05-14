@@ -1,4 +1,4 @@
-#[Amazon Marketplace Promotions](https://github.com/tdantas/it-interviews/tree/master/basket_checkout)
+# [Amazon Marketplace Promotions](https://github.com/tdantas/it-interviews/tree/master/basket_checkout)
 
 Amazon is an online marketplace, here is a sample of some of the products available on our site:
 

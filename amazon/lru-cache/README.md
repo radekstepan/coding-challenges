@@ -1,8 +1,8 @@
-#[LRU Cache](http://www.careercup.com/question?id=24510663)
+# [LRU Cache](http://www.careercup.com/question?id=24510663)
 
 Design a cache using the Least Recently Used algorithm.
 
-##API
+## API
 
 ```elixir
 # Create a new cache of maximum size of 4.

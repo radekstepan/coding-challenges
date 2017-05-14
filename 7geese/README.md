@@ -1,14 +1,10 @@
-#[sourceboard](http://radekstepan.com/sourceboard)
+# Sourceboard
 
 Dashboard of GitHub open source projects.
 
-![Build Status](http://img.shields.io/codeship/05417400-43b6-0132-3a1e-26172f935df1.svg?style=flat)
-[![Dependencies](http://img.shields.io/david/radekstepan/sourceboard.svg?style=flat)](https://david-dm.org/radekstepan/sourceboard)
-[![License](http://img.shields.io/badge/license-AGPL--3.0-red.svg?style=flat)](LICENSE)
+![image](https://raw.githubusercontent.com/radekstepan/coding-challenges/master/7geese/public/img/screenshot.jpg)
 
-![image](https://raw.githubusercontent.com/radekstepan/sourceboard/master/public/img/screenshot.jpg)
-
-##Customize
+## Customize
 
 To point to your **own projects** change the `url` property in `src/models/repos.coffee` according to the [api docs](https://developer.github.com/v3/repos/).
 
@@ -22,7 +18,7 @@ And finally [LESS](http://lesscss.org/) & [LESS Hat](http://lesshat.madebysource
 
 You will find tests over in `test/`, which validates *numanization* of repo names and adding of languages into a unique collection as they arrive in repos from GitHub.
 
-##Commands
+## Commands
 
 ```bash
 radek@helios ~/d/sourceboard> rake -T

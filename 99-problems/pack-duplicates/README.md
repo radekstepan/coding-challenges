@@ -1,4 +1,4 @@
-#[Pack consecutive duplicates of list elements into sublists](https://sites.google.com/site/prologsite/prolog-problems/1)
+# [Pack consecutive duplicates of list elements into sublists](https://sites.google.com/site/prologsite/prolog-problems/1)
 
 If a list contains repeated elements they should be placed in separate sublists.
 
