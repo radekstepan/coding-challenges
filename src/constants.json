@@ -1,0 +1,11 @@
+{
+  "USER": {
+    "EMAIL": "user@email.ca",
+    "PASS": "password"
+  },
+  "ERROR": {
+    "AUTH": "You are not authorized",
+    "FIELD_LENGTH": "The % field is too short",
+    "EMAIL": "The email is not valid"
+  }
+}

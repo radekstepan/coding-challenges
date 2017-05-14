@@ -1,0 +1,152 @@
+// Vendor dependencies.
+@import "node_modules/normalize.less/normalize.less";
+
+// LESS Mixins.
+@import "node_modules/lesshat/build/lesshat.less";
+
+// Now our app.
+@import "fonts.less";
+@import "icons.less";
+
+// Color definitions.
+@primary: #52253A;
+@grey: #9092A1;
+@loading: #107FC9;
+@ok: #00917E;
+@fail: #A61416;
+
+// Mobile media breakpoint.
+@mobile: ~"only screen and (max-width: 480px)";
+
+// Button shadow border helper.
+.button(@color) {
+  @shadow: darken(@color, 10%);
+
+  background: @color;
+  .box-shadow(0 6px @shadow);
+
+  &:hover {
+    .box-shadow(0 4px @shadow);
+  }
+
+  &:active {
+    .box-shadow(0 0 @shadow);
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: url('../img/unsplash.jpg') center;
+  .background-size(cover);
+}
+
+#app {
+  .display(flex);
+  .align-items(center);
+  .flex-direction(column);
+  .justify-content(center);
+  color: #FFF;
+  min-height: 100%;
+  width: 100%;
+  background: fade(darken(@primary, 20%), 70%);
+}
+
+#form {
+  padding: 20px;
+  width: 400px;
+  font-family: 'Abel';
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: default;
+  position: relative;
+  .box-sizing(border-box);
+  .user-select(none);
+
+  @media @mobile {
+    width: 100%;
+  }
+
+  &.notify {
+    &.ok .button {
+      .button(@ok);
+    }
+
+    &.fail .button {
+      .button(@fail);
+    }
+
+    .button {
+      height: 100%;
+      max-height: 100%;
+      position: absolute;
+      top: 0;
+      .button(@loading);
+    }
+  }
+
+  .title {
+    border-bottom: 2px solid @primary;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .field {
+    margin-bottom: 20px;
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: @grey;
+      font-size: 16px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 10px 8px;
+      border: 0;
+      color: #FFF;
+      font-weight: bold;
+      background: fade(@grey, 25%);
+      .box-sizing(border-box);
+      .border-radius(4px);
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .button {
+    margin-top: 16px;
+    width: 100%;
+    border: 0;
+    color: #FFF;
+    padding: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    outline: none;
+    background: @primary;
+    .border-radius(4px);
+    .button(@primary);
+    .transition(all 0.1s ease-out);
+
+    .icon {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    &:hover {
+      top: 2px;
+    }
+
+    &:active {
+      top: 6px;
+    }
+  }
+}
