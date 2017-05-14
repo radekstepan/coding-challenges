@@ -1,0 +1,47 @@
+{{#with state}}
+  {{#if ready}}
+    {{#if error}}
+      <div id="status">
+        <Icons icon="sadness"/> {{error}}
+      </div>
+    {{else}}
+      {{#if langs.length}}
+        <div id="filter">
+          <ul>
+            <li on-click="select" {{^selected}}class="active"{{/selected}}>All</li>
+            {{#langs}}
+              <li on-click="select:{{name}}" {{#if selected == name}}class="active"{{/if}}>{{name}}</li>
+            {{/langs}}
+          </ul>
+        </div>
+      {{/if}}
+      {{#if repos.length}}
+        <div id="repos">
+          {{#repos}}
+            {{#if show(language)}}
+              <div class="repo" intro-outro='slide'>
+                <header>
+                  <div class="meta">
+                    <div class="nfo" title="Stars"><Icons icon="stars"/> {{stargazers_count}}</div>
+                    <div class="nfo" title="Forks"><Icons icon="forks"/> {{forks_count}}</div>
+                    {{#if language}}
+                      <div class="nfo lang {{language.toLowerCase()}}" title="Language">{{language}}</div>
+                    {{/if}}
+                  </div>
+                  <h3><a href="{{html_url}}" title="View {{name}} on GitHub">{{format.numan(name)}}</a></h3>
+                </header>
+                <p>{{description}}</p>
+              </div>
+            {{/if}}
+          {{/repos}}
+        </div>
+      {{else}}
+        No repos
+      {{/if}}
+    {{/if}}
+  {{else}}
+    <div id="status">
+      <Icons icon="spinner"/>
+    </div>
+  {{/if}}
+{{/with}}
