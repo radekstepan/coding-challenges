@@ -1,0 +1,10 @@
+{
+  "name": "hungry-hippos",
+  "version": "0.0.2",
+  "scripts": {
+    "test": "./node_modules/.bin/tap test.js"
+  },
+  "devDependencies": {
+    "tap": "10.3.2"
+  }
+}

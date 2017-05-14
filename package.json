@@ -1,0 +1,17 @@
+{
+  "name": "toptal-interview",
+  "version": "1.0.0",
+  "description": "Toptal interview preparation",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/radekstepan/toptal-interview.git"
+  },
+  "author": "Radek Stepan",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/radekstepan/toptal-interview#readme"
+}
