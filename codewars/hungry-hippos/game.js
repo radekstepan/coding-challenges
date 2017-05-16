@@ -1,15 +1,10 @@
-const List = require('../../generic/linked-list/list.js');
-
 function Game(board){
   this.board = board;
-  this.list = new List(function(a, b) {
-    return parseInt(a, 10) < parseInt(b, 10);
-  });
+  this.set = new MySet();
 }
 
 Game.prototype.play = function() {
   let c = 0, k = 0, g = this.board, l = {};
-  this.rows = [];
   for (let i = 0; i < g.length; i++) { // rows
     for (let j = 0; j < g[i].length; j++) { // columns
       // Has food?
@@ -23,7 +18,7 @@ Game.prototype.play = function() {
           // A link of two areas?
           if (a !== b) {
             // Did we know about this?
-            if (!this.list.link(a, b)) c--;
+            if (!this.set.link(a, b)) c--;
           }
           // Set as being part of this area.
           g[i][j] = a;
@@ -38,12 +33,39 @@ Game.prototype.play = function() {
           c++;
           g[i][j] = ++k;
         }
-        console.log(i, j, a, b, c);
       }
     }
-    this.rows.push(c);
   }
   return c;
+}
+
+function MySet() {
+  this.map = {};
+}
+
+MySet.prototype.add = function(key) {
+  if (!(key in this.map)) {
+    this.map[key] = new Set([ key ]);
+  }
+
+  return this;
+}
+
+MySet.prototype.link = function(a, b) {
+  this.add(a).add(b);
+
+  const [ setA, setB ] = [ this.map[a], this.map[b] ];
+
+  // We are linked.
+  if (setA.has(b)) return true;
+
+  // Else make a union.
+  for (let key of setB) {
+    setA.add(key);
+    this.map[key] = setA;
+  }
+
+  return false;
 }
 
 module.exports = Game;
