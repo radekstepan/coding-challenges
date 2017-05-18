@@ -4,16 +4,23 @@ const map = {
   n: 5, r: 6
 };
 
-module.exports = (input) => input.split(/\s+/g).map((n) => {
-  let [ h, ...t ] = n, d = [0, 0, 0], i = 0, c, s;
-  while (t.length && i < 3) {
+const american = (n) => {
+  let [ h, ...t ] = n,
+      f = map[h.toLowerCase()],
+      d = [ f <= 0 ? h : f, 0, 0, 0],
+      i = 1,
+      s,
+      c;
+  while (t.length && i < 4) {
     if ((c = map[t.shift()]) <= 0) {
       if (!c) s = true;
       continue;
     }
-    if (!s && (i && d[i - 1] === c)) continue;
+    if (!s && d[i - 1] === c) continue;
     s = false;
     d[i++] = c;
   }
-  return h.toUpperCase() + d.join('');
-}).join(' ');
+  return (typeof d[0] === h ? d : [h].concat(d.slice(1))).join('').toUpperCase();
+};
+
+module.exports = (input) => input.split(/\s+/g).map(american).join(' ');

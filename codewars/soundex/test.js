@@ -10,3 +10,4 @@ t.equal(soundex('Tymczak'), 'T522');
 t.equal(soundex('Ashcraft'), 'A261');
 t.equal(soundex('uryrtkzp'), 'U663');
 t.equal(soundex('zxqurlwbx'), 'Z641');
+t.equal(soundex('Pfister'), 'P236');

@@ -1,29 +1,25 @@
 # Soundex
 
-In this Kata you will encode strings using a Soundex variation called "American Soundex" using the following steps:
+In this Kata you will encode strings using a Soundex variation called **American Soundex** using the following steps:
 
-- Save the first letter. Remove all occurrences of h and w except first letter.
-- Replace all consonants (include the first letter) with digits as follows:
+1. Save the first letter. Remove all occurrences of 'h' and 'w' except first letter.
+2. Replace all consonants (include the first letter) with digits.
   - b, f, p, v = 1
   - c, g, j, k, q, s, x, z = 2
   - d, t = 3
   - l = 4
   - m, n = 5
   - r = 6
-- Replace all adjacent same digits with one digit.
-- Remove all occurrences of a, e, i, o, u, y except first letter.
-- If first symbol is a digit replace it with letter saved on step 1.
-- Append 3 zeros if result contains less than 3 digits. Remove all except first letter and 3 digits after it.
+3. Replace all adjacent same digits with one digit.
+4. Remove all occurrences of a, e, i, o, u, y except first letter.
+5. If first symbol is a digit replace it with letter saved on step 1.
+6. Pad with zeroes if result contains less than 3 digits.
 
 ### Input
 
 A space separated string of one or more names. E.g.
 
 `Sarah Connor`
-
-zxqurlwbx
-Z22-64*12
-Z641
 
 ### Output
 
