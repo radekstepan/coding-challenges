@@ -23,10 +23,6 @@ Coding challenges and interview take-home exercises.
   - Even Fibonacci Numbers (Elixir)
   - Multiples of 3 and 5 (Elixir)
 
-### Generic
-
-- Linked list (JavaScript)
-
 ### Companies
 
 - 7Geese
@@ -40,3 +36,9 @@ Coding challenges and interview take-home exercises.
   - Unique Substrings (Elixir)
 - Telemetry TV
   - A login form (JavaScript)
+- Wealthsimple
+  - Portfolio Rebalancer (JavaScript)
+
+### Generic
+
+- Linked list (JavaScript)
