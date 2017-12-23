@@ -1,0 +1,10 @@
+{
+  "name": "rebalancer",
+  "version": "1.0.0",
+  "dependencies": {
+    "superstatic": "5.0.1"
+  },
+  "scripts": {
+    "start": "superstatic . --port 8080"
+  }
+}

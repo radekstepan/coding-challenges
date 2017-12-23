@@ -1,0 +1,147 @@
+@font_color: #15324e;
+@primary_color: #439af1;
+@secondary_color: darken(@primary_color, 10%);
+@highlight_color: #ffffe8;
+@buy_color: #22cc96;
+@sell_color: #ff3823;
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 24px;
+  background: #f4f4f4;
+  color: @font_color;
+
+  main {
+    background: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 880px;
+    margin: 0 auto;
+    margin-top: 80px;
+
+    input {
+      font-weight: inherit;
+      font-size: inherit;
+      font-family: inherit;
+      background: transparent;
+      border: 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    sub {
+      vertical-align: baseline;
+      font-size: 18px;
+      margin-right: 2px;
+    }
+
+    .title {
+      font-size: 36px;
+      margin: 10px 0 0 15px;
+    }
+
+    .buy {
+      background: @buy_color;
+    }
+
+    .sell {
+      background: @sell_color;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+
+      th, td {
+        border-bottom: 1px solid #ebeeee;
+        padding: 6px 20px;
+      }
+
+      thead tr th {
+        color: #bbb;
+        font-weight: normal;
+        text-align: left;
+      }
+
+      tbody {
+        tr {
+          &.active td {
+            background: @highlight_color;
+          }
+
+          td {
+            transition: background 0.2s;
+            white-space: nowrap;
+            text-align: center;
+
+            &:first-child {
+              text-align: left;
+              white-space: normal;
+            }
+
+            input {
+              margin-left: 4px;
+              width: 100%;
+
+              &.target {
+                width: 55px;
+              }
+
+              &.balance {
+                width: 100px;
+              }
+            }
+
+            .action {
+              color: #fff;
+              border-radius: 4px;
+              padding: 3px 12px 3px 0;
+              margin: -3px 0px;
+              position: relative;
+              text-align: right;
+
+              &:before {
+                content: '$';
+                display: inline-block;
+                position: absolute;
+                bottom: 6px;
+                left: 11px;
+                font-size: 17px;
+              }
+            }
+          }
+
+          &:last-child td {
+            border: 0;
+          }
+        }
+      }
+    }
+
+    .add {
+      background: @primary_color;
+      box-shadow: 0 4px @secondary_color;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin: 4px 20px 8px 20px;
+      font-weight: bold;
+
+      &:hover {
+        margin-top: 6px;
+        margin-bottom: 6px;
+        box-shadow: 0 2px @secondary_color;
+      }
+
+      &:active {
+        margin-top: 8px;
+        margin-bottom: 4px;
+        box-shadow: 0 0;
+      }
+    }
+  }
+}
