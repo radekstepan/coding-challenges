@@ -1,0 +1,28 @@
+# [Surrounded Regions](https://leetcode.com/problems/surrounded-regions/description/)
+
+Given a 2D board containing `X` and `O`, capture all regions surrounded by `X`.
+A region is captured by flipping all `O`s into `X`s in that surrounded region.
+
+For example,
+
+```
+X X X X
+X O O X
+X X O X
+X O X X
+```
+
+After running your function, the board should be:
+
+```
+X X X X
+X X X X
+X X X X
+X O X X
+```
+
+## TODO
+
+1. Go equal on all elements so we can log where the bug appears.
+2. Make sure we explore top to bottom.
+3. Do odd boards work (height/width-wise)?

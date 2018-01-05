@@ -1,0 +1,11 @@
+input: |
+  XXXX
+  X--X
+  -X-X
+  X-XX
+
+output: |
+  XXXX
+  XXXX
+  -XXX
+  X-XX

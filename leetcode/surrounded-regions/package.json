@@ -1,0 +1,12 @@
+{
+  "name": "surrounded-regions",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "./node_modules/.bin/tap test.js"
+  },
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "js-yaml": "^3.10.0",
+    "tap": "11.0.1"
+  }
+}
