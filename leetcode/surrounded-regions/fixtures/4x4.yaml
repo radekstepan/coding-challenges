@@ -1,11 +1,11 @@
 input: |
   XXXX
-  X--X
-  -X-X
-  X-XX
+  XOOX
+  OXOX
+  XOXX
 
-output: |
+expected: |
   XXXX
   XXXX
-  -XXX
-  X-XX
+  OXXX
+  XOXX

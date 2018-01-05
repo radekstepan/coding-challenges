@@ -23,6 +23,4 @@ X O X X
 
 ## TODO
 
-1. Go equal on all elements so we can log where the bug appears.
-2. Make sure we explore top to bottom.
-3. Do odd boards work (height/width-wise)?
+1. Do odd boards work (height/width-wise)?

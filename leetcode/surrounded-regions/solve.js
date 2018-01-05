@@ -1,5 +1,5 @@
 const X = 'X';
-const O = '-';
+const O = 'O';
 const S = '*';
 
 module.exports = board => {
@@ -13,7 +13,7 @@ module.exports = board => {
   if (w < 3 || h < 3) return board;
 
   // Starting point.
-  let [r, c, l] = [0, 0, 0]; // row, column, layer index
+  let [row, col, l] = [0, 0, 0]; // row, column, layer index
 
   // Have we starred the last layer?
   let starred = true;
@@ -21,22 +21,36 @@ module.exports = board => {
     starred = false;
 
     // Go left to right for top and bottom rows.
-    while (c < w - l) {
-      if (board[l][c] === O && (l === 0 || board[l - 1][c] === S)) { // top
-        board[l][c] = S;
+    while (col < w - l) {
+      if (board[l][col] === O && (l === 0 || board[l - 1][col] === S)) { // top
+        board[l][col] = S;
         starred = true;
       }
       if ((l + 1 !== max) || even) {
-        if (board[h - l - 1][c] === O && (l === 0 || board[h - l][c] === S)) { // bottom
-          board[h - l - 1][c] = S;
+        if (board[h - l - 1][col] === O && (l === 0 || board[h - l][col] === S)) { // bottom
+          board[h - l - 1][col] = S;
           starred = true;
         }
       }
 
-      c += 1;
+      col += 1;
     }
 
     // Go top to bottom for left and right columns.
+    while (row < h - l) {
+      if (board[row][l] === O && (l === 0 || board[row][l - 1] === S)) { // left
+        board[row][l] = S;
+        starred = true;
+      }
+      if ((l + 1 !== max) || even) {
+        if (board[row][w - l - 1] === O && (l === 0 || board[row][w - l] === S)) { // right
+          board[row][w - l - 1] = S;
+          starred = true;
+        }
+      }
+
+      row += 1;
+    }
 
     l += 1; // new layer
     r = l;
