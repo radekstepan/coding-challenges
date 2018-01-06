@@ -1,9 +1,9 @@
 input: |
-  XXX
-  XOX
-  XOX
+  OOO
+  OOO
+  OOO
 
 expected: |
-  XXX
-  XOX
-  XOX
+  OOO
+  OOO
+  OOO

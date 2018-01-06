@@ -1,0 +1,13 @@
+input: |
+  OXXOX
+  XOOXO
+  XOXOX
+  OXOOO
+  XXOXO
+
+expected: |
+  OXXOX
+  XXXXO
+  XXXOX
+  OXOOO
+  XXOXO

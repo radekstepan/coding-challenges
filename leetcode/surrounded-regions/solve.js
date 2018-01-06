@@ -2,65 +2,47 @@ const X = 'X';
 const O = 'O';
 const S = '*';
 
-module.exports = board => {
-  board.above = (r, c) => r ? board[r - 1][c] : S;
-  board.below = (r, c) => r + 1 !== board.length ? board[r + 1][c] : S;
-  board.left = (r, c) => c ? board[r][c - 1] : S;
-  board.right = (r, c) => c + 1 !== board[0].length ? board[r][c + 1] : S;
-
+module.exports = b => {
   // Size.
-  const [w, h] = [board[0].length, board.length];
-  // Max number of layers to explore.
-  const max = Math.ceil(Math.min(w, h) / 2); // TODO deal with rotation
+  const h = b.length, w = h ? b[0].length : 0;
 
   // Minimum size check.
-  if (w < 3 || h < 3) return board;
+  if (w >= 3 && h >= 3) {
+    // Up, down, left, right, mirror cell helpers.
+    b.u = (r, c) => r ? b[r - 1][c] : S;
+    b.d = (r, c) => r + 1 !== h ? b[r + 1][c] : S;
+    b.l = (r, c) => c ? b[r][c - 1] : S;
+    b.r = (r, c) => c + 1 !== w ? b[r][c + 1] : S;
+    b.m = (i, s) => s - i - 1;
 
-  // Starting point.
-  let [row, col, l] = [0, 0, 0]; // row, column, layer index
+    // Max number of layers to explore.
+    const m = Math.ceil(Math.min(w, h) / 2);
 
-  // Have we starred the last layer?
-  let starred = true;
-  while ((l < max) && starred) { // end when we explore all layers or if we don't star anything
-    starred = false;
-
-    // Go left to right for top and bottom rows.
-    while (col < w - max + 1) {
-      if (board[l][col] === O && board.above(l, col) === S) { // top
-        board[l][col] = S;
-        starred = true;
+    // End when we explore all layers or if we don't star anything.
+    for (let i = 0, s = !0; s && i < m; i++) {
+      s = !1;
+      // Go left to right for top and bottom rows.
+      for (let c = i; c <= w - m + 1; c++) {
+        b[i][c] === O && b.u(i, c) === S && // up
+          (s = b[i][c] = S);
+        b[b.m(i, h)][c] === O && b.d(b.m(i, h), c) === S && // down
+          (s = b[b.m(i, h)][c] = S);
       }
-      if (board[h - l - 1][col] === O && board.below(h - l - 1, col) === S) { // bottom
-        board[h - l - 1][col] = S;
-        starred = true;
+
+      // Go top to bottom for left and right columns.
+      for (let r = i; r <= h - m + 1; r++) {
+        b[r][i] === O && b.l(r, i) === S && // left
+          (s = b[r][i] = S);
+        b[r][b.m(i, w)] === O && b.r(r, b.m(i, w)) === S && // right
+          (s = b[r][b.m(i, w)] = S);
       }
-      col += 1;
     }
 
-    // Go top to bottom for left and right columns.
-    while (row < h - max + 1) {
-      if (board[row][l] === O && board.left(row, l) === S) { // left
-        board[row][l] = S;
-        starred = true;
+    // Turn all "*" characters into "O"s, the rest is "X".
+    for (let i = 0; i < h; i++) {
+      for (let j = 0; j < w; j++) {
+        b[i][j] = b[i][j] === S ? O : X;
       }
-      if (board[row][w - l - 1] === O && board.right(row, w - l - 1) === S) { // right
-        board[row][w - l - 1] = S;
-        starred = true;
-      }
-      row += 1;
-    }
-
-    l += 1; // new layer
-    row = l;
-    col = l;
-  }
-
-  // Turn all "*" characters into "O"s, the rest is "X".
-  for (let i = 0; i < h; i++) {
-    for (let j = 0; j < w; j++) {
-      board[i][j] = board[i][j] === S ? O : X;
     }
   }
-
-  return board;
 };
