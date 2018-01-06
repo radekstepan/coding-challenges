@@ -1,0 +1,7 @@
+input: |
+  XX
+  XO
+
+expected: |
+  XX
+  XO

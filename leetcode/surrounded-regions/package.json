@@ -2,7 +2,7 @@
   "name": "surrounded-regions",
   "version": "0.0.1",
   "scripts": {
-    "test": "./node_modules/.bin/tap test.js"
+    "test": "./node_modules/.bin/tap test.js -R dot"
   },
   "devDependencies": {
     "glob": "^7.1.2",

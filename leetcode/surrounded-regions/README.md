@@ -23,4 +23,7 @@ X O X X
 
 ## TODO
 
-1. Do odd boards work (height/width-wise)?
+- Number of layers is different for each side if board is uneven.
+- But keep track starred for last layer, at least one side (top/bottom or left/right) needs to be starred, even if it's been skipped because it's uneven
+- Do odd boards work (height/width-wise)?
+- Need to set max layers (half of width/height) for each side, not just one global.

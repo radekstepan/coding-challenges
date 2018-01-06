@@ -1,0 +1,9 @@
+input: |
+  XXX
+  XOX
+  XOX
+
+expected: |
+  XXX
+  XOX
+  XOX
