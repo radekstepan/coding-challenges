@@ -7,7 +7,7 @@ const solve = require('./solve.js');
 
 const p = text => text.trim().split('\n').map(r => r.trim().split(''));
 
-glob('fixtures/*.yaml', (err, matches) => {
+glob('fixtures/10x10.yaml', (err, matches) => {
   matches.map(file => {
     let {input, expected} = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
     const board = p(input);
