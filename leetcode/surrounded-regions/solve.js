@@ -9,7 +9,6 @@ module.exports = b => {
     while (rc || q.length) {
       while (q.length) {
         const [r, c] = q.shift();
-        if (b[r, c] === 'X') continue;
         // Explore the surrounding cells.
         r && b[r - 1][c] === 'O' && (b[r - 1][c] = '*') && q.unshift([r - 1, c]); // up
         r + 1 !== h && b[r + 1][c] === 'O' && (b[r + 1][c] = '*') && q.unshift([r + 1, c]); // down
