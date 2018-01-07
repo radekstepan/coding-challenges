@@ -20,3 +20,13 @@ X X X X
 X X X X
 X O X X
 ```
+
+## Solution
+
+Avoids recursion.
+
+```
+59 / 59 test cases passed
+Status: Accepted
+Runtime: 142 ms (> 72.73% of JS submissions)
+```
