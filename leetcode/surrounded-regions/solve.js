@@ -18,12 +18,11 @@ module.exports = b => {
 
     const q = []; // queue to explore
     let rc = [0, 0]; // row, column OR false when done
-
     while (rc || q.length) {
       while (q.length) {
         const n = q.shift();
-        const [r, c] = n;
         if (b.g(n) === X) continue;
+        const [r, c] = n;
         // Explore the surrounding cells.
         b.u(n) && b.s([r - 1, c]) && q.unshift([r - 1, c]);
         b.d(n) && b.s([r + 1, c]) && q.unshift([r + 1, c]);
@@ -32,35 +31,18 @@ module.exports = b => {
       }
 
       const [r, c] = rc;
-      // Check.
-      if (b.g(rc) === O) {
-        b.s(rc);
-        q.push([r, c]);
-      }
+      // Check this cell.
+      b.g(rc) === O && b.s(rc) && q.push([r, c]);
       if (!r) { // first and last row
         // Check last row.
-        if (b.g([h - 1, c]) === O) {
-          b.s([h - 1, c]);
-          q.push([h - 1, c]);
-        }
-        // Move.
-        if (c + 1 === w) {
-          rc = [1, 0]; // switch to the sides
-        } else {
-          rc[1] += 1; // go right
-        }
+        b.g([h - 1, c]) === O && b.s([h - 1, c]) && q.push([h - 1, c]);
+        // Go right or switch sides.
+        c + 1 === w ? rc = [1, 0] : rc[1] += 1;
       } else {
         // Check right column.
-        if (b.g([r, w - 1]) === O) {
-          b.s([r, w - 1]);
-          q.push([r, w - 1]);
-        }
-        // Move.
-        if (r + 1 === h) {
-          rc = !1; // done
-        } else {
-          rc[0] += 1; // go down
-        }
+        b.g([r, w - 1]) === O && b.s([r, w - 1]) && q.push([r, w - 1]);
+        // Go down or we are done.
+        r + 1 === h ? rc = !1 : rc[0] += 1;
       }
     }
 
