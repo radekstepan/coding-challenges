@@ -36,6 +36,8 @@ Coding challenges and interview take-home exercises.
   - A list of 1 million products (JavaScript)
 - [Facebook](https://github.com/alonsovidales/facebook-programming-challenges)
   - Unique Substrings (Elixir)
+- LinkedIn
+  - Nested Integer (JavaScript)
 - Telemetry TV
   - A login form (JavaScript)
 - Wealthsimple
