@@ -12,6 +12,7 @@ Coding challenges and interview take-home exercises.
   - Reverse Words in a String (Elixir)
   - Telegram Problem (Elixir)
 - [Codewars](https://www.codewars.com)
+  - 4 kyu - Human readable duration format (Elixir)
   - 4 kyu - LRU Cache (JavaScript)
   - 5 kyu - Break camelCase (JavaScript)
   - 5 kyu - Calculating with Functions (JavaScript)
