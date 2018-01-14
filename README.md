@@ -17,6 +17,7 @@ Coding challenges and interview take-home exercises.
   - 5 kyu - Break camelCase (JavaScript)
   - 5 kyu - Calculating with Functions (JavaScript)
   - 5 kyu - Hungry Hippos (JavaScript)
+  - 5 kyu - Directions Reduction (Elixir)
   - 5 kyu - Soundex (JavaScript)
   - 6 kyu - Count the Smiley Faces (JavaScript)
   - 7 kyu - Get the Middle Character (JavaScript)
