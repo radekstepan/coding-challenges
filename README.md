@@ -14,6 +14,7 @@ Coding challenges and interview take-home exercises.
 - [Codewars](https://www.codewars.com)
   - 4 kyu - Human readable duration format (Elixir)
   - 4 kyu - LRU Cache (JavaScript)
+  - 4 kyu - Snail Sort (JavaScript)
   - 5 kyu - Break camelCase (JavaScript)
   - 5 kyu - Calculating with Functions (JavaScript)
   - 5 kyu - Directions Reduction (Elixir)
