@@ -17,6 +17,7 @@ Coding challenges and interview take-home exercises.
 - Codewars
   - 4 kyu - [Human readable duration format](codewars/human-readable-duration/solve.exs) (Elixir)
   - 4 kyu - [LRU Cache](codewars/lru-cache/cache.js) (JavaScript)
+  - 4 kyu - [Next bigger number with the same digits](codewars/next-bigger-digits/solve.js) (JavaScript)
   - 4 kyu - [Snail Sort](codewars/snail-sort/sort.js) (JavaScript)
   - 5 kyu - [Break camelCase](codewars/break-camelcase/break.js) (JavaScript)
   - 5 kyu - [Calculating with Functions](codewars/calc-with-functions/calc.js) (JavaScript)
