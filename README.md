@@ -15,6 +15,7 @@ Coding challenges and interview take-home exercises.
   - [Reverse Words in a String](c2-wiki/reverse-words/solve.exs) (Elixir)
   - [Telegram Problem](c2-wiki/telegram-problem/solve.exs) (Elixir)
 - Codewars
+  - 3 kyu - [Can you get the loop?](codewars/get-the-loop/solve.js) (JavaScript)
   - 3 kyu - [Molecule to atoms](codewars/molecule-to-atoms/parse.js) (JavaScript)
   - 4 kyu - [Human readable duration format](codewars/human-readable-duration/solve.exs) (Elixir)
   - 4 kyu - [LRU Cache](codewars/lru-cache/cache.js) (JavaScript)
