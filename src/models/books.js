@@ -1,5 +1,7 @@
+import { list } from '../data/books';
+
 const books = {
-  state: { list: [] },
+  state: { list },
   reducers: {
     save(state, book) {
       return {

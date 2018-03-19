@@ -28,18 +28,16 @@ class AddBook extends Component {
       <div>
         <Topbar />
         <div id="main">
-          <div className="wrapper">
-            <div className="modal">
-              <div className="title">Add a Book</div>
-              <form onSubmit={this.onSubmit}>
-                <Field placeholder="Title" onChange={this.onChange('title')} />
-                <Field placeholder="Author" onChange={this.onChange('author')} />
-                <Field placeholder="Description" onChange={this.onChange('description')} />
-                <div>
-                  <input type="submit" className="button" value="Save" />
-                </div>
-              </form>
-            </div>
+          <div className="modal">
+            <div className="title">Add a Book</div>
+            <form onSubmit={this.onSubmit}>
+              <Field placeholder="Title" onChange={this.onChange('title')} />
+              <Field placeholder="Author" onChange={this.onChange('author')} />
+              <Field placeholder="Description" onChange={this.onChange('description')} />
+              <div>
+                <input type="submit" className="button" value="Save" />
+              </div>
+            </form>
           </div>
         </div>
       </div>

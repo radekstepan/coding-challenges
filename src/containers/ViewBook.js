@@ -8,11 +8,9 @@ const ViewBook = ({ store, dispatch }) => {
     <div>
       <Topbar />
       <div id="main">
-        <div className="wrapper">
-          <div className="message warning">Weve sent you a welcome email so go
-            check it out.</div>
-          <div className="title">Welcome!</div>
-        </div>
+        <div className="message warning">Weve sent you a welcome email so go
+          check it out.</div>
+        <div className="title">Welcome!</div>
       </div>
     </div>
   );

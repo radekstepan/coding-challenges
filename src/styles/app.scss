@@ -1,8 +1,10 @@
 $green: #0ebf00;
+$border: #e3e3e3;
 
 #app {
   background: #fafafa;
   height: 100%;
+  min-width: 330px;
 
   .header {
     display: flex;
@@ -11,6 +13,14 @@ $green: #0ebf00;
       &:first-child {
         flex-grow: 1;
       }
+    }
+
+    .title {
+      color: $green;
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      user-select: none;
     }
   }
 
@@ -46,23 +56,82 @@ $green: #0ebf00;
   }
 
   #main {
-    padding: 30px 0;
+    padding: 30px 20px;
 
-    .wrapper {
-      width: 800px;
-      margin: 0 auto;
-
-      > div {
-        margin-bottom: 20px;
-      }
+    > div {
+      margin-bottom: 20px;
     }
 
-    .title {
-      color: $green;
-      font-weight: 500;
-      font-size: 18px;
-      letter-spacing: 0.5px;
-      user-select: none;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      justify-content: space-between;
+      grid-gap: 20px;
+
+      &.table {
+        .book {
+          display: grid;
+          grid-column: 1 / -1;
+          grid-template-columns: repeat(3, minmax(auto, 1fr));
+          grid-gap: 15px;
+
+          > div {
+            &:not(:first-child) {
+              border-left: 1px solid $border;
+            }
+          }
+
+          .meta {
+            margin-top: 0;
+          }
+        }
+      }
+
+      .book {
+        border: 1px solid $border;
+        box-sizing: border-box;
+        transition: all .15s ease;
+        cursor: pointer;
+        font-size: 12px;
+        color: #a9b0bc;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        word-break: break-word;
+
+        &:hover {
+          box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+          transform: translateY(-1px);
+
+          .title {
+            color: $green;
+          }
+        }
+
+        // &:before {
+        //   content: attr(data-idx) ".";
+        //   position: absolute;
+        //   right: 3px;
+        //   top: 7px;
+        //   background: rgba(255, 255, 255, 0.9);
+        //   padding: 5px;
+        // }
+
+        .title {
+          color: #000;
+          font-size: 14px;
+          margin-bottom: 5px;
+          flex-grow: 2;
+        }
+
+        .meta {
+          margin-top: 5px;
+          white-space: nowrap;
+          max-width: 100ch;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
     }
 
     .modal,
