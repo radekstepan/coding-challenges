@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@rematch/core": "0.5.2",
+    "classnames": "2.2.5",
     "history": "4.7.2",
     "node-sass-chokidar": "1.1.0",
     "normalize.css": "8.0.0",

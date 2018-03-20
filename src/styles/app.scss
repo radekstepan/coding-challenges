@@ -1,4 +1,5 @@
 $green: #0ebf00;
+$grey: #a9b0bc;
 $border: #e3e3e3;
 
 #app {
@@ -8,12 +9,8 @@ $border: #e3e3e3;
 
   .header {
     display: flex;
-
-    > div {
-      &:first-child {
-        flex-grow: 1;
-      }
-    }
+    justify-content: space-between;
+    align-items: center;
 
     .title {
       color: $green;
@@ -21,6 +18,20 @@ $border: #e3e3e3;
       font-size: 18px;
       letter-spacing: 0.5px;
       user-select: none;
+    }
+
+    .toggle {
+      color: $grey;
+      border-bottom: 1px solid fade-out($grey, .8);
+      font-size: 14px;
+      cursor: pointer;
+      margin: 0 20px;
+      user-select: none;
+    }
+
+    .action {
+      flex-grow: 1;
+      text-align: right;
     }
   }
 
@@ -66,9 +77,10 @@ $border: #e3e3e3;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       justify-content: space-between;
-      grid-gap: 20px;
 
       &.grid {
+        grid-gap: 20px;
+
         .book {
           border-width: 1px;
           display: flex;
