@@ -1,53 +1,43 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import cls from "classnames";
+import opa from "object-path";
 
 import Topbar from "../components/Topbar";
 import Book from "../components/Book";
 
-class ListBooks extends Component {
-  constructor() {
-    super();
+const ListBooks = props => {
+  const grid = props.grid ? ['grid', 'table'] : ['table', 'grid'];
 
-    this.state = { grid: true };
-
-    this.onToggleGrid = this.onToggleGrid.bind(this);
-  }
-
-  onToggleGrid() {
-    this.setState({ grid: !this.state.grid });
-  }
-
-  render() {
-    const {grid} = this.state;
-
-    return (
-      <div>
-        <Topbar />
-        <div id="main">
-          <div className="header">
-            <div className="title">Book list</div>
-            <div className="toggle" onClick={this.onToggleGrid}>View as a {!grid ? 'Grid' : 'Table'}</div>
-            <div className="action">
-              <input
-                type="button"
-                className="button"
-                value="Add a Book"
-                onClick={() => this.props.navigate('/add')}></input>
-            </div>
+  return (
+    <div>
+      <Topbar />
+      <div id="main">
+        <div className="header">
+          <div className="title">Book list</div>
+          <div
+            className="toggle"
+            onClick={() => props.navigate(`?view=${grid[1]}`)}>View as a {grid[1]}</div>
+          <div className="action">
+            <input
+              type="button"
+              className="button"
+              value="Add a Book"
+              onClick={() => props.navigate('/add')} />
           </div>
-          <div className="panel">
-            <div className={cls('books', grid ? 'grid' : 'table')}>
-              {this.props.books.map((book, idx) => <Book {...book} key={book.isbn} idx={idx + 1} />)}
-            </div>
+        </div>
+        <div className="panel">
+          <div className={cls('books', grid[0])}>
+            {props.books.map((book, idx) => <Book {...book} key={book.isbn} idx={idx + 1} />)}
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 const mapState = state => ({
+  grid: opa.get(state.router, "search.view", "grid") === "grid",
   books: state.books.list
 });
 
