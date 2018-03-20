@@ -17,7 +17,7 @@ const ListBooks = props => (
           onClick={() => props.navigate('/add')}></input>
       </div>
       <div className="panel">
-        <div className="grid table">
+        <div className="books table">
           {props.books.map((book, idx) => <Book {...book} key={book.isbn} idx={idx + 1} />)}
         </div>
       </div>
