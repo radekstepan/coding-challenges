@@ -47,7 +47,7 @@ const books = {
           // Skip saving over state that is already old.
           myTick === tick && this.get(isbn);
           resolve();
-        }, 2e3);
+        }, 1e3);
       });
     }
   }

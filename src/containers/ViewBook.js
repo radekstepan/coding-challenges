@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import Spinner from '../components/Spinner';
+
 class ViewBook extends Component {
   componentDidMount() {
     // Find the book.
@@ -11,7 +13,7 @@ class ViewBook extends Component {
     return (
       <div id="main">
         <div className="wrapper">
-          <div className="message info">Fetching book {this.props.isbn} &hellip;</div>
+          <Spinner />
         </div>
       </div>
     );
@@ -29,7 +31,7 @@ class ViewBook extends Component {
   }
 
   render() {
-    const {book, navigate} = this.props;
+    const {book, goBack} = this.props;
 
     switch(true) {
       case !book:
@@ -40,13 +42,16 @@ class ViewBook extends Component {
         return (
           <div id="main">
             <div className="header">
-              <div className="title">Book</div>
+              <div className="title">{book.title}</div>
               <div
                 className="toggle"
-                onClick={() => navigate(`/`)}>Back to list</div>
+                onClick={goBack}>Back to list</div>
               <div className="action" />
             </div>
             <div className="panel">
+              <div>by {book.author}</div>
+              <div>ISBN: {book.isbn}</div>
+              <div>{book.description}</div>
             </div>
           </div>
         );
@@ -60,7 +65,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  navigate: dispatch.router.navigate,
+  goBack: dispatch.router.goBack,
   findBook: dispatch.books.find
 });
 

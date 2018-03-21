@@ -203,11 +203,6 @@ $border: #e3e3e3;
       border: 2px solid $border;
       border-radius: 2px;
       padding: 20px;
-    }
-
-    .modal {
-      width: 400px;
-      margin: 0 auto;
 
       > div,
       > form > div {
@@ -215,10 +210,20 @@ $border: #e3e3e3;
           margin-bottom: 20px;
         }
       }
+    }
+
+    .modal {
+      width: 400px;
+      margin: 0 auto;
 
       input {
         width: 100%;
       }
     }
+  }
+
+  .spinner {
+    margin: 0 auto;
+    display: inherit;
   }
 }

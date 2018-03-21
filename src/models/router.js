@@ -49,6 +49,9 @@ const router = {
   effects: {
     navigate(pathname, state) {
       history.push(pathname);
+    },
+    goBack(state) {
+      history.goBack();
     }
   }
 };
