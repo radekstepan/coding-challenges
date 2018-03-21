@@ -4,9 +4,20 @@ import { connect } from "react-redux";
 import Spinner from '../components/Spinner';
 
 class ViewBook extends Component {
+  constructor() {
+    super();
+
+    this.onRemoveBook = this.onRemoveBook.bind(this);
+  }
+
   componentDidMount() {
     // Find the book.
-    this.props.findBook(this.props.isbn);
+    this.props.resolveBook(this.props.idx);
+  }
+
+  onRemoveBook() {
+    // Remove book and redirect back to the list.
+    this.props.removeBook(this.props.idx).then(this.props.goBack);
   }
 
   renderLoading() {
@@ -23,15 +34,15 @@ class ViewBook extends Component {
     return (
       <div id="main">
         <div className="wrapper">
-          <div className="message error">Book {this.props.isbn} not found. But
-            since you want it so much, our best scribes are on it!</div>
+          <div className="message error">Book not found. But since you want it
+            so much, our best scribes are on it!</div>
         </div>
       </div>
     );
   }
 
   render() {
-    const {book, goBack} = this.props;
+    const {book} = this.props;
 
     switch(true) {
       case !book:
@@ -45,14 +56,16 @@ class ViewBook extends Component {
               <div className="title">{book.title}</div>
               <div
                 className="toggle"
-                onClick={goBack}>Back to list</div>
+                onClick={this.props.goBack}>Back to list</div>
               <div className="action" />
             </div>
             <div className="panel">
-              <div>by {book.author}</div>
-              <div>ISBN: {book.isbn}</div>
+              <div>{book.author}</div>
               <div>{book.description}</div>
             </div>
+            <div
+              className="link"
+              onClick={this.onRemoveBook}>Remove this book</div>
           </div>
         );
     }
@@ -60,13 +73,15 @@ class ViewBook extends Component {
 }
 
 const mapState = state => ({
-  isbn: state.router.params.isbn,
+  idx: state.router.params.idx,
   book: state.books.book
 });
 
 const mapDispatch = dispatch => ({
   goBack: dispatch.router.goBack,
-  findBook: dispatch.books.find
+  navigate: dispatch.router.navigate,
+  resolveBook: dispatch.books.resolveBook,
+  removeBook: dispatch.books.removeBook
 });
 
 export default connect(mapState, mapDispatch)(ViewBook);

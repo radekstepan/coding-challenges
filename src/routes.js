@@ -7,7 +7,7 @@ import ViewBook from "./containers/ViewBook";
 const routes = [
   { path: "/", render: () => <ListBooks /> },
   { path: "/add", title: "Add a Book", render: () => <AddBook /> },
-  { path: "/book/:isbn", title: "View a Book", render: () => <ViewBook /> }
+  { path: "/book/:idx", title: "View a Book", render: () => <ViewBook /> }
 ];
 
 export default routes;

@@ -7,6 +7,16 @@ $border: #e3e3e3;
   height: 100%;
   min-width: 330px;
 
+  .link,
+  .toggle {
+    display: inline-block;
+    color: $grey;
+    border-bottom: 1px solid fade-out($grey, .8);
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -21,12 +31,8 @@ $border: #e3e3e3;
     }
 
     .toggle {
-      color: $grey;
-      border-bottom: 1px solid fade-out($grey, .8);
-      font-size: 14px;
-      cursor: pointer;
+      display: block;
       margin: 0 20px;
-      user-select: none;
     }
 
     .action {

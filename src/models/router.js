@@ -47,10 +47,10 @@ const router = {
     }
   },
   effects: {
-    navigate(pathname, state) {
+    navigate(pathname) {
       history.push(pathname);
     },
-    goBack(state) {
+    goBack() {
       history.goBack();
     }
   }

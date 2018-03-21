@@ -1,33 +1,44 @@
 import opa from 'object-path';
 
-import { list } from '../data/books';
+import { map, last } from '../data/books';
 
 // Make sure async doesn't get out of sync.
 let tick = 0;
 
 const books = {
   state: {
-    // The list of books.
-    list,
+    // The map of books.
+    map,
+    // Last book index.
+    last,
     // Book instance.
     book: null
   },
   reducers: {
-    save(state, book) {
+    saveBook(state, book) {
+      const idx = state.last + 1;
       return {
         ...state,
-        list: [...state.list, book]
+        last: idx,
+        map: {...state.map, [idx]: book}
       };
     },
-    get(state, isbn) {
-      const book = state.list.find(book => book.isbn === isbn);
+    getBook(state, idx) {
+      return {
+        ...state,
+        book: idx in state.map ? state.map[idx] : { error: 'Not found' }
+      };
+    },
+    removeBook(state, idx) {
+      const {[idx]: book, ...map} = state.map;
 
       return {
         ...state,
-        book: book ? book : { error: 'Not found' }
+        map,
+        book: null
       };
     },
-    clear(state) {
+    clearBook(state) {
       return {
         ...state,
         book: null
@@ -35,17 +46,17 @@ const books = {
     }
   },
   effects: {
-    async find(isbn, state) {
+    async resolveBook(idx, root) {
       // Cached?
-      if (opa.get(state, 'books.book.isbn') === isbn) return;
+      if (opa.get(root, 'books.book.isbn', -1) === opa.get(root, `books.map.${idx}.isbn`)) return;
       // Clear the cache.
-      this.clear();
+      this.clearBook();
       const myTick = ++tick;
       // Simulate XHR.
       await new Promise((resolve, reject) => {
         setTimeout(() => {
           // Skip saving over state that is already old.
-          myTick === tick && this.get(isbn);
+          myTick === tick && this.getBook(idx);
           resolve();
         }, 1e3);
       });
