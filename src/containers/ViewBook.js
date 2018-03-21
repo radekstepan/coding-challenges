@@ -16,8 +16,8 @@ class ViewBook extends Component {
   }
 
   onRemoveBook() {
-    // Remove book and redirect back to the list.
-    this.props.removeBook(this.props.idx).then(this.props.goBack);
+    this.props.goBack(); // otherwise we get a "flash" from this ui
+    this.props.removeBook(this.props.idx);
   }
 
   renderLoading() {

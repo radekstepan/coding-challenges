@@ -15,10 +15,12 @@ const books = {
     book: null
   },
   reducers: {
-    saveBook(state, book) {
+    addBook(state, book) {
       const idx = state.last + 1;
+      book.isbn = `isbn:000${idx}`; // "generate" ISBN
       return {
         ...state,
+        book, // cache it
         last: idx,
         map: {...state.map, [idx]: book}
       };

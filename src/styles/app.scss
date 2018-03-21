@@ -17,18 +17,18 @@ $border: #e3e3e3;
     user-select: none;
   }
 
+  .title {
+    color: $green;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    user-select: none;
+  }
+
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .title {
-      color: $green;
-      font-weight: 500;
-      font-size: 18px;
-      letter-spacing: 0.5px;
-      user-select: none;
-    }
 
     .toggle {
       display: block;

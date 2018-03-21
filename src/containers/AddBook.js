@@ -18,7 +18,8 @@ class AddBook extends Component {
   }
 
   onSubmit(e) {
-    this.props.addBook(this.state);
+    this.props.addBook(this.state).then(() => this.props.navigate('/'));
+
     e.preventDefault();
   }
 
@@ -42,7 +43,8 @@ class AddBook extends Component {
 }
 
 const mapDispatch = dispatch => ({
-  addBook: dispatch.books.add
+  navigate: dispatch.router.navigate,
+  addBook: dispatch.books.addBook
 });
 
 export default connect(null, mapDispatch)(AddBook);
