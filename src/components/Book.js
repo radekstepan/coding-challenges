@@ -1,7 +1,7 @@
 import React from "react";
 
 const Book = props => (
-  <div className="book">
+  <div className="book" onClick={props.viewDetail}>
     <div className="meta idx">{props.idx}</div>
     <div className="title">{props.title}</div>
     <div className="meta">{props.author}</div>

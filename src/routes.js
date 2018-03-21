@@ -5,9 +5,9 @@ import AddBook from "./containers/AddBook";
 import ViewBook from "./containers/ViewBook";
 
 const routes = [
-  { path: "/", action: () => <ListBooks /> },
-  { path: "/add", title: "Add a Book", action: () => <AddBook /> },
-  { path: "/view/:id", title: "View a Book", action: () => <ViewBook /> },
+  { path: "/", render: () => <ListBooks /> },
+  { path: "/add", title: "Add a Book", render: () => <AddBook /> },
+  { path: "/book/:isbn", title: "View a Book", render: () => <ViewBook /> }
 ];
 
 export default routes;

@@ -18,18 +18,18 @@ const matchURI = (path, uri) => {
   return params;
 };
 
-const resolve = pathname => {
+const resolve = location => {
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i];
-    const params = matchURI(route.path, pathname);
+    const params = matchURI(route.path, location.pathname);
     if (!params) continue;
-    return [i, params, route.title, getQueryParams()];
+    return [i, params, route.title, getQueryParams(location.search)];
   }
   throw new Error("Not found");
 };
 
-const getQueryParams = () => {
-  const params = new URLSearchParams(window.location.search);
+const getQueryParams = search => {
+  const params = new URLSearchParams(search);
   const obj = {};
   for (const [key, val] of params.entries()) {
     obj[key] = val;
@@ -40,8 +40,8 @@ const getQueryParams = () => {
 const router = {
   state: { route: '' },
   reducers: {
-    route(state, pathname) {
-      const [route, params, title, search] = resolve(pathname);
+    route(state, location) {
+      const [route, params, title, search] = resolve(location);
       document.title = title ? [ROOT_TITLE, title].join(' - ') : ROOT_TITLE;
       return {...state, route, params, search};
     }

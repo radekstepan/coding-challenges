@@ -73,6 +73,35 @@ $border: #e3e3e3;
       margin-bottom: 20px;
     }
 
+    .wrapper {
+      width: 800px;
+      margin: 0 auto;
+    }
+
+    .message {
+      padding: 20px 30px;
+      border-width: 1px;
+      border-style: solid;
+
+      &.info {
+        color: #30b3ef;
+        background: #edf9fe;
+        border-color: #bee7fa;
+      }
+
+      &.warn {
+        color: #d6971e;
+        background: #fff3dd;
+        border-color: #f8e1b6;
+      }
+
+      &.error {
+        color: #a94442;
+        background: #f2dede;
+        border-color: #ebccd1;
+      }
+    }
+
     .books {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -115,6 +144,10 @@ $border: #e3e3e3;
           grid-template-columns: 30px repeat(3, minmax(auto, 1fr));
           grid-gap: 15px;
           border-width: 1px 1px 0 1px;
+
+          &:nth-child(even) {
+            background-color: lighten($grey, 29%);
+          }
 
           &:last-child {
             border-bottom-width: 1px;

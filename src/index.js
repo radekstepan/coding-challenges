@@ -14,7 +14,7 @@ const store = init({
 });
 
 // Initial route.
-store.dispatch.router.route(history.location.pathname);
+store.dispatch.router.route(history.location);
 
 ReactDOM.render(
   <Provider store={store}>
