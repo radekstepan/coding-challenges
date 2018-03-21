@@ -1,16 +1,14 @@
 import opa from 'object-path';
 
-import { map, last } from '../data/books';
-
 // Make sure async doesn't get out of sync.
 let tick = 0;
 
 const books = {
   state: {
     // The map of books.
-    map,
+    map: {},
     // Last book index.
-    last,
+    last: -1,
     // Book instance.
     book: null
   },

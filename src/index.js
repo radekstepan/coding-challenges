@@ -9,6 +9,11 @@ import App from "./App";
 
 import "./styles/main.css";
 
+import { map, last } from './data/books';
+
+// Example data.
+models.books.state = {...models.books.state, map, last};
+
 const store = init({
   models,
 });
