@@ -16,6 +16,11 @@ const books = {
   },
   reducers: {
     addBook(state, book) {
+      // "Validation".
+      if (!book.title || !book.author) {
+        return state;
+      }
+
       const idx = state.last + 1;
       book.isbn = `isbn:000${idx}`; // "generate" ISBN
       return {
