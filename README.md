@@ -2,6 +2,8 @@
 
 A client-side CR/D SPA in React showcasing books.
 
+![Screencap](https://goo.gl/Jdz6dZ)
+
 ## Quickstart
 
 ```bash
