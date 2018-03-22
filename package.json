@@ -1,7 +1,7 @@
 {
   "name": "helpscout-store",
   "description": "An example book store app",
-  "homepage": "http://example.com",
+  "homepage": "https://helpscout-store.netlify.com",
   "version": "0.0.1",
   "dependencies": {
     "@rematch/core": "0.5.2",
