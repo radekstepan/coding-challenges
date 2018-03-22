@@ -3,7 +3,7 @@ import toRegex from "path-to-regexp";
 import routes from "../routes";
 import history from "../history";
 
-const ROOT_TITLE = "HelpScout Book Store";
+const ROOT_TITLE = "Help Scout Book Store";
 
 const matchURI = (path, uri) => {
   const keys = [];
