@@ -1,6 +1,6 @@
 {
   "name": "helpscout-store",
-  "description": "An example book store app",
+  "description": "A client-side book listing CR/D SPA in React.",
   "homepage": "https://helpscout-store.netlify.com",
   "version": "0.0.1",
   "dependencies": {
