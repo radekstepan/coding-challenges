@@ -47,8 +47,8 @@ overall coverage of 2%...
 
 The main application entry-point lives in `src/App.js`. The `render` function
 displays the currently active container/route. To trigger a route change we call
-the `navigate` action on the store which updates the app
-[history](https://github.com/reacttraining/history) and changes the current route
+the `navigate` action on the store which updates the app using pushState (
+[history](https://github.com/reacttraining/history)) and changes the current route
 in the store if it matches any of the paths in `src/models/router.js`. This way
 route changes behave like any other app input/state-change.
 
@@ -126,8 +126,9 @@ As an example, `URLSearchParams` are
 *tl;dr: Serve the target audience.*
 
 The app doesn't have any [blank slate](https://basecamp.com/books/Getting%20Real.pdf),
-links to help, 404 etc. If we are replacing an existing app, we'll have to make
-sure that no links break and updates are graceful.
+notifications, links to help, error pages etc. If we are replacing an existing
+app, we'll also have to make sure that no links break and deployments result in
+no downtime.
 
 Who is our target audience?
 - Locale requirements?
