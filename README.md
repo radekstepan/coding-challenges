@@ -43,13 +43,15 @@ Coding challenges and interview take-home exercises.
 ### Apps
 
 - 7Geese
-  - [A dashboard of GitHub open source projects](7geese/src) (JavaScript)
+  - [A dashboard of GitHub open source projects](apps/7geese/src) (JavaScript)
 - Casumo
-  - [A list of 1 million products](casumo/src) (JavaScript)
+  - [A list of 1 million products](apps/casumo/src) (JavaScript)
+- Help Scout
+  - [A book store](apps/helpscout/src) (JavaScript)
 - Telemetry TV
-  - [A login form](telemetry-tv/src/) (JavaScript)
+  - [A login form](apps/telemetry-tv/src/) (JavaScript)
 - Wealthsimple
-  - [Portfolio Rebalancer](wealthsimple/rebalancer/app.jsx) (JavaScript)
+  - [Portfolio rebalancer](apps/wealthsimple/rebalancer/app.jsx) (JavaScript)
 
 ### Generic
 
