@@ -1,0 +1,235 @@
+$green: #0ebf00;
+$grey: #a9b0bc;
+$border: #e3e3e3;
+
+#app {
+  background: #fafafa;
+  height: 100%;
+  min-width: 330px;
+
+  .link,
+  .toggle {
+    display: inline-block;
+    color: $grey;
+    border-bottom: 1px solid fade-out($grey, .8);
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .title {
+    color: $green;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    user-select: none;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .toggle {
+      display: block;
+      margin: 0 20px;
+    }
+
+    .action {
+      flex-grow: 1;
+      text-align: right;
+    }
+  }
+
+  input {
+    border: 1px solid $border;
+    border-radius: 2px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+
+    &.button {
+      border: 0;
+      background-color: $green;
+      color: #fff;
+      cursor: pointer;
+      width: auto;
+    }
+  }
+
+  #topbar {
+    padding: 25px 20px;
+    background: #fff;
+    border-bottom: 1px solid #dfdfdf;
+
+    .logo {
+      background-repeat: no-repeat !important;
+      background-position: 0 0 !important;
+      width: 105px;
+      height: 30px;
+      cursor: pointer;
+    }
+  }
+
+  #main {
+    padding: 30px 20px;
+
+    > div {
+      margin-bottom: 20px;
+    }
+
+    .wrapper {
+      width: 800px;
+      margin: 0 auto;
+    }
+
+    .message {
+      padding: 20px 30px;
+      border-width: 1px;
+      border-style: solid;
+
+      &.info {
+        color: #30b3ef;
+        background: #edf9fe;
+        border-color: #bee7fa;
+      }
+
+      &.warn {
+        color: #d6971e;
+        background: #fff3dd;
+        border-color: #f8e1b6;
+      }
+
+      &.error {
+        color: #a94442;
+        background: #f2dede;
+        border-color: #ebccd1;
+      }
+    }
+
+    .books {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      justify-content: space-between;
+
+      &.grid {
+        grid-gap: 20px;
+
+        .book {
+          border-width: 1px;
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          padding: 10px 5px;
+
+          .title {
+            flex-grow: 2;
+            padding: 5px;
+            margin-right: 20px;
+          }
+
+          .meta {
+            padding: 2px 5px;
+
+            &.idx {
+              position: absolute;
+              top: 14px;
+              right: 5px;
+            }
+          }
+        }
+      }
+
+      &.table {
+        grid-gap: 0 20px;
+
+        .book {
+          display: grid;
+          grid-column: 1 / -1;
+          grid-template-columns: 30px repeat(3, minmax(auto, 1fr));
+          grid-gap: 15px;
+          border-width: 1px 1px 0 1px;
+
+          &:nth-child(even) {
+            background-color: lighten($grey, 29%);
+          }
+
+          &:last-child {
+            border-bottom-width: 1px;
+          }
+
+          .title, .meta {
+            padding: 10px 5px;
+
+            &:not(:first-child) {
+              border-left: 1px solid $border;
+            }
+          }
+        }
+      }
+
+      .book {
+        border-color: $border;
+        border-style: solid;
+        box-sizing: border-box;
+        transition: all .2s ease;
+        cursor: pointer;
+        font-size: 12px;
+        color: #a9b0bc;
+        word-break: break-word;
+
+        &:hover {
+          box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+          transform: translateY(-1px);
+
+          .title {
+            color: $green;
+          }
+        }
+
+        .title {
+          color: #000;
+          font-size: 14px;
+        }
+
+        .meta {
+          white-space: nowrap;
+          max-width: 100ch;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          line-height: 14px;
+        }
+      }
+    }
+
+    .modal,
+    .panel {
+      background: #fff;
+      border: 2px solid $border;
+      border-radius: 2px;
+      padding: 20px;
+
+      > div,
+      > form > div {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .modal {
+      width: 400px;
+      margin: 0 auto;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .spinner {
+    margin: 0 auto;
+    display: inherit;
+  }
+}
