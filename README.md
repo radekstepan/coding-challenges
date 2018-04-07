@@ -47,7 +47,7 @@ Coding challenges and interview take-home exercises.
 - Casumo
   - [A list of 1 million products](apps/casumo/src) (JavaScript)
 - Help Scout
-  - [A book store](apps/helpscout/src) (JavaScript)
+  - [A book store](apps/helpscout) (JavaScript)
 - Telemetry TV
   - [A login form](apps/telemetry-tv/src/) (JavaScript)
 - Wealthsimple
