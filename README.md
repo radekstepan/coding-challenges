@@ -22,6 +22,7 @@ Coding challenges and interview take-home exercises.
   - 4 kyu - [Next bigger number with the same digits](codewars/next-bigger-digits/solve.js) (JavaScript)
   - 4 kyu - [Range Extraction](codewars/range-extraction/solve.js) (JavaScript)
   - 4 kyu - [Snail Sort](codewars/snail-sort/sort.js) (JavaScript)
+  - 4 kyu - [The observed PIN](codewars/observed-pin/solve.js) (JavaScript)
   - 5 kyu - [Break camelCase](codewars/break-camelcase/break.js) (JavaScript)
   - 5 kyu - [Calculating with Functions](codewars/calc-with-functions/calc.js) (JavaScript)
   - 5 kyu - [Directions Reduction](codewars/directions-reduction/solve.exs) (Elixir)
