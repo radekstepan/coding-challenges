@@ -57,4 +57,5 @@ Coding challenges and interview take-home exercises.
 
 ### Generic
 
+- [Evaluate an expression](generic/evaluate-expression/evaluate.js) (JavaScript)
 - [Linked list](generic/linked-list/list.js) (JavaScript)
