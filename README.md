@@ -33,7 +33,8 @@ Coding challenges and interview take-home exercises.
   - 6 kyu - [Count the Smiley Faces](codewars/count-smiley-faces/counter.js) (JavaScript)
   - 7 kyu - [Get the Middle Character](codewars/get-the-middle-character/solution.js) (JavaScript)
 - Daily Coding Problem
-  - [Sum of Any Two Numbers](daily-coding-problem/001-sum-of-any/solve.js) (JavaScript)
+  - [Sum of any two numbers](daily-coding-problem/001-sum-of-any/solve.js) (JavaScript)
+  - [Product at index](daily-coding-problem/002-product-at-index/solve.js) (JavaScript)
 - Facebook
   - [Unique Substrings](facebook/unique-substrings/solve.exs) (Elixir)
 - LeetCode

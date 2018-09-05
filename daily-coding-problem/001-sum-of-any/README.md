@@ -1,4 +1,4 @@
-# Problem #1 - Sum of Any Two
+# Problem #1 - Sum of any two numbers
 
 This problem was recently asked by Google.
 
