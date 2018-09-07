@@ -35,6 +35,7 @@ Coding challenges and interview take-home exercises.
 - Daily Coding Problem
   - [Sum of any two numbers](daily-coding-problem/001-sum-of-any/solve.js) (JavaScript)
   - [Product at index](daily-coding-problem/002-product-at-index/solve.js) (JavaScript)
+  - [Serialize a tree](daily-coding-problem/003-serialize-a-tree/node.js) (JavaScript)
 - Facebook
   - [Unique Substrings](facebook/unique-substrings/solve.exs) (Elixir)
 - LeetCode
