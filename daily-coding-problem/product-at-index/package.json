@@ -1,0 +1,10 @@
+{
+  "name": "sum-of-any",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "./node_modules/.bin/tap test.js -R dot"
+  },
+  "devDependencies": {
+    "tap": "11.0.1"
+  }
+}
