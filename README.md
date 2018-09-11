@@ -31,6 +31,7 @@ Coding challenges and interview take-home exercises.
   - 5 kyu - [Sum of Pairs](codewars/sum-of-pairs/elixir/sum.exs) (Elixir)
   - 5 kyu - [Sum of Pairs](codewars/sum-of-pairs/javascript/sum.js) (JavaScript)
   - 6 kyu - [Count the Smiley Faces](codewars/count-smiley-faces/counter.js) (JavaScript)
+  - 6 kyu - [Equal Sides of An Array](codewars/find-even-index/solve.kts) (Kotlin)
   - 7 kyu - [Get the Middle Character](codewars/get-the-middle-character/solution.js) (JavaScript)
 - Daily Coding Problem
   - [Sum of any two numbers](daily-coding-problem/sum-of-any/solve.js) (JavaScript)
