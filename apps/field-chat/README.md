@@ -2,7 +2,7 @@
 
 A message history inspector for a group messaging service.
 
-![Screencap](raw/master/apps/field-chat/screencap.gif)
+![Screencap](screencap.gif)
 
 ## Quickstart
 
