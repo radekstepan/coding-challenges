@@ -53,6 +53,8 @@ Coding challenges and interview take-home exercises.
   - [A dashboard of GitHub open source projects](apps/7geese/src) (JavaScript)
 - Casumo
   - [A list of 1 million products](apps/casumo/src) (JavaScript)
+- FieldChat
+  - [A message history inspector for a group messaging service](apps/field-chat) (JavaScript)
 - Help Scout
   - [A book store](apps/helpscout) (JavaScript)
 - Telemetry TV

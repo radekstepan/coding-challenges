@@ -1,0 +1,191 @@
+$green: #00bf76;
+$grey: #a9b0bc;
+$border: #e3e3e3;
+$text: #6b7074;
+
+#app {
+  background: #fafafa;
+  min-height: 100%;
+  min-width: 330px;
+
+  .title {
+    color: $green;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    user-select: none;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .action {
+      flex-grow: 1;
+      text-align: right;
+    }
+  }
+
+  input {
+    border: 1px solid $border;
+    border-radius: 2px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+
+    &.button {
+      border: 0;
+      background-color: $green;
+      color: #fff;
+      cursor: pointer;
+      width: auto;
+    }
+  }
+
+  #topbar {
+    padding: 25px 20px;
+    background: #fff;
+    border-bottom: 1px solid #dfdfdf;
+
+    .logo {
+      background-repeat: no-repeat !important;
+      background-position: 0 0 !important;
+      width: 105px;
+      height: 30px;
+    }
+
+    .menu {
+      display: flex;
+      align-self: center;
+      user-select: none;
+
+      div {
+        color: $text;
+        text-transform: uppercase;
+        padding: 0 10px;
+        font-weight: 500;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+
+        &.active {
+          color: $green;
+        }
+      }
+    }
+  }
+
+  #main {
+    padding: 30px 20px;
+    width: 800px;
+    margin: 0 auto;
+
+    > div {
+      margin-bottom: 20px;
+    }
+
+    .message {
+      padding: 20px 30px;
+      border-width: 1px;
+      border-style: solid;
+
+      &.info {
+        color: #30b3ef;
+        background: #edf9fe;
+        border-color: #bee7fa;
+      }
+
+      &.warn {
+        color: #d6971e;
+        background: #fff3dd;
+        border-color: #f8e1b6;
+      }
+
+      &.error {
+        color: #a94442;
+        background: #f2dede;
+        border-color: #ebccd1;
+      }
+    }
+
+    .messages {
+      .message {
+        border-width: 0 0 1px;
+
+        &:nth-child(even) {
+          background-color: lighten($grey, 29%);
+        }
+
+        &:last-child {
+          border: 0;
+        }
+
+        &.owner {
+          background-color: lighten($green, 60%);
+        }
+      }
+
+      .message {
+        border-color: $border;
+        border-style: solid;
+        box-sizing: border-box;
+        transition: all .2s ease;
+        font-size: 17px;
+        line-height: 22px;
+        color: $text;
+        word-break: break-word;
+
+        .author {
+          color: #000;
+        }
+
+        .meta {
+          opacity: 0.6;
+          float: right;
+          white-space: nowrap;
+        }
+
+        .marker {
+          position: relative;
+          background-color: rgba(255, 255, 0, 0.33);
+
+          &.mention {
+            color: $green;
+            background: transparent;
+            font-weight: 500;
+          }
+        }
+
+        &:hover {
+          box-shadow: 0 2px 8px 0 rgba(0,0,0,.1);
+          transform: translateY(-1px);
+        }
+      }
+    }
+
+    .modal,
+    .panel {
+      background: #fff;
+      border: 2px solid $border;
+      border-radius: 2px;
+      padding: 20px;
+
+      > div,
+      > form > div {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .modal {
+      width: 400px;
+      margin: 0 auto;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+}
