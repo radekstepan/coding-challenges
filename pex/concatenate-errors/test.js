@@ -39,33 +39,21 @@ it('should transform errors', () => {
   // in this specific case,
   // errors for `url` and `urls` keys should be nested
   // see expected object below
-  const res = solve(errors, ['urls', 'url']).toJS();
-
-  // console.log(JSON.stringify(res, null, 2));
-
   assert.deepEqual(solve(errors, ['urls', 'url']).toJS(), {
     name: 'This field is required.',
-    // concatenate array into single string
     age: 'This field is required. Only numeric characters are allowed.',
-    // preserve nesting
     urls: [{}, {}, {
       site: {
-        // append a trailing comma
         code: 'This site code is invalid.',
         id: 'Unsupported id.',
       },
     }],
-    // preserve nesting
     url: {
       site: {
-        // append a trailing comma
         code: 'This site code is invalid.',
         id: 'Unsupported id.',
       },
     },
-    // sort keys first
-    // extract deep strings
-    // filter out non-unique values 
     tags: 'Only alphanumeric characters are allowed. Third error. ' +
       'Minumum length of 10 characters is required.',
     tag: 'Only alphanumeric characters are allowed.',

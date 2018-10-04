@@ -1,15 +1,15 @@
 const Immutable = require('immutable');
-const { Map, List } = Immutable;
 
-const fn = val => {
-  if (typeof val === 'string') return val;
+const { List } = Immutable;
+const { Iterable } = Immutable;
 
-  if (List.isList(val) && typeof val.get(0) === 'string') {
-    return val.toSet().join('. ') + '.';
-  }
-  
-  return val.map(fn);
-};
+const join = val =>
+  List.isList(val) && typeof val.get(0) === 'string' ?
+    val.toSet().join('. ') + '.' : val.map(join);
+
+const flatten = (list, val) =>
+  Iterable.isIterable(val) ?
+    val.reduce(flatten, list) : list.push(val);
 
 /**
  * Concatenate error messages and keep nested if need be.
@@ -19,5 +19,5 @@ const fn = val => {
  */
 module.exports = (errors, nested) =>
   errors.map((val, key) =>
-    fn(nested.indexOf(key) >= 0 ? val : val.flatten())
+    join(nested.indexOf(key) >= 0 ? val : flatten(new List, val))
   );

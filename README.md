@@ -43,6 +43,8 @@ Coding challenges and interview take-home exercises.
   - [Surrounded Regions](leetcode/surrounded-regions/solve.js) (JavaScript)
 - LinkedIn
   - [Nested Integer](linkedin/nested-integer/sum.js) (JavaScript)
+- Pex
+  - [Concatenate nested error messages](pex/concatenate-errors/solve.js) (JavaScript)
 - Project Euler
   - [Even Fibonacci Numbers](project-euler/even-fibonacci-numbers/solve.exs) (Elixir)
   - [Multiples of 3 and 5](project-euler/multiples-of-3-and-5/solve.exs) (Elixir)
