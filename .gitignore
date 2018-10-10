@@ -8,3 +8,4 @@ build/
 daily-coding-problem/sum-non-adjacent
 daily-coding-problem/xor-linked-list
 triplebyte/
+!apps/sitemate/**/*.css
