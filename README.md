@@ -59,6 +59,8 @@ Coding challenges and interview take-home exercises.
   - [A message history inspector for a group messaging service](apps/field-chat) (JavaScript)
 - Help Scout
   - [A book store](apps/helpscout) (JavaScript)
+- Sitemate
+  - [A confirmation dialog](apps/sitemate) (JavaScript)
 - Telemetry TV
   - [A login form](apps/telemetry-tv/src/) (JavaScript)
 - Wealthsimple

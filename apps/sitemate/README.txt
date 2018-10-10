@@ -1,0 +1,1 @@
+Show a confirmation dialog component using vanilla JS, CSS.
