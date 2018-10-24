@@ -1,8 +1,8 @@
 {
-  "name": "evaluate-expression",
+  "name": "top-algorithms",
   "version": "0.0.1",
   "scripts": {
-    "test": "./node_modules/.bin/tap test.js -R dot"
+    "test": "./node_modules/.bin/tap **/*.js -R dot"
   },
   "devDependencies": {
     "tap": "11.0.1"
