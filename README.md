@@ -34,10 +34,11 @@ Coding challenges and interview take-home exercises.
   - 6 kyu - [Equal Sides of An Array](codewars/find-even-index/solve.kts) (Kotlin)
   - 7 kyu - [Get the Middle Character](codewars/get-the-middle-character/solution.js) (JavaScript)
 - Daily Coding Problem
-  - [Sum of any two numbers](daily-coding-problem/sum-of-any/solve.js) (JavaScript)
+  - [Generate numbers with a probability](daily-coding-problem/random-probability.md) (JavaScript)
   - [Product at index](daily-coding-problem/product-at-index/solve.js) (JavaScript)
   - [Serialize a tree](daily-coding-problem/serialize-a-tree/node.js) (JavaScript)
-  - [Generate numbers with a probability](daily-coding-problem/random-probability.js) (JavaScript)
+  - [Simplify a directory path](daily-coding-problem/simplify-path.md) (JavaScript)
+  - [Sum of any two numbers](daily-coding-problem/sum-of-any/solve.js) (JavaScript)
 - Facebook
   - [Unique Substrings](facebook/unique-substrings/solve.exs) (Elixir)
 - LeetCode
