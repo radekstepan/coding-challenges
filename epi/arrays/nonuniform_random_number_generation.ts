@@ -19,7 +19,7 @@ function binary_search(C: number[], r: number): number {
 }
 
 // O(nlogn)
-function nonuniform_randon_number_generation(N: number[], P: number[]): number[] {
+function nonuniform_random_number_generation(N: number[], P: number[]): number[] {
   // Build the cumulative probabilities.
   const C = new Array<number>(P.length);
   C[P.length - 1] = 1;
@@ -38,12 +38,12 @@ function nonuniform_randon_number_generation(N: number[], P: number[]): number[]
 const N = [3,5,7,11];
 const P = [9/18, 6/18, 2/18, 1/18];
 
-console.log(nonuniform_randon_number_generation(N, P));
+console.log(nonuniform_random_number_generation(N, P));
 
 const S = 10000;
 let M = new Map(N.map(v => [v, 0]));
 for (let i = 0; i < S; i++) {
-  const R = nonuniform_randon_number_generation(N, P);
+  const R = nonuniform_random_number_generation(N, P);
   for (const e of R) {
     M.set(e, M.get(e) + 1);
   }
