@@ -69,3 +69,51 @@ console.log(replace_and_remove_epi([a,c,d,b,b,c,a], 7));
 console.log(replace_and_remove_epi([b,b,b,b], 3));
 console.log(replace_and_remove_epi([b,c,b,c], 3));
 console.log(replace_and_remove_epi([a,a,a,a], 2));
+
+// You have an array C of characters. The characters may be letters, digits, blanks, and
+// punctuation. The telex-encoding of the array C is an array T of characters in which letters, digits,
+// and blanks appear as before, but punctuation marks are spelled out. For example, telex-encoding
+// entails replacing the character "." by the string "DOT", the character "," by "COMMA", the
+// character "?" by "QUESTION MARK", and the character "!" by "EXCLAMATION MARK".
+// Design an algorithm to perform telex-encoding with O(1) space.
+
+const R = {
+  ",": "COMMA",
+  "?": "QUESTION MARK",
+  "!": "EXCLAMATION MARK",
+  ".": "FULL STOP"
+};
+
+function telex_encoding(C: string[]) {
+  let i = 0;
+  // Get the array size we'll need.
+  let s = 0;
+  while (i !== C.length) {
+    const r = R[C[i]];
+    if (r) {
+      s += r.length;
+    }
+    s++;
+    i++;
+  }
+
+  // Fill from the back.
+  while (i) {
+    i--;
+    const r = R[C[i]];
+    if (r) {
+      let j = r.length;
+      while (j) {
+        j--;
+        C[--s] = r.charAt(j);
+      }
+      C[--s] = " ";
+    } else {
+      C[--s] = C[i];
+    }
+  }
+
+  return C;
+}
+
+console.log(telex_encoding(Array.from("A, B C?!")).join(""));
