@@ -117,3 +117,25 @@ function telex_encoding(C: string[]) {
 }
 
 console.log(telex_encoding(Array.from("A, B C?!")).join(""));
+
+// Write a program which merges two sorted arrays of integers, A and B. Specifically, the
+// final result should be a sorted array of length m + n, where n and m are the lengths of A and B,
+// respectively. Use O(1) additional storage-assume the result is stored in A, which has sufficient
+// space. These arrays are C-style arrays, i.e., contiguous preallocated blocks of memory.
+
+function merge_sorted_arrays(A: number[], B: number[]): number[] {
+  let iA = A.length - 1;
+  let iB = B.length - 1;
+  let w = A.length + B.length - 1;
+  // Merge both arrays from the end keeping track of write index.
+  while (w !== -1) {
+    if (B[iB] > (A[iA] ?? -Infinity)) {
+      A[w--] = B[iB--];
+    } else {
+      A[w--] = A[iA--];
+    }
+  }
+  return A;
+}
+
+console.log(merge_sorted_arrays([1,2], [0,3,4]));
